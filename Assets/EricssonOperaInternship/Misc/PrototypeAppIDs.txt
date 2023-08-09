@@ -1,0 +1,9 @@
+Unity Editor: 2022.3.1f1
+
+Player settings and project settings: DO NOT CHANGE
+
+Oculus App ID: 9882868481754387
+
+Photon Fusion ID: 287bbc6e-f384-41f5-b54d-2cc62624176a
+
+Photon Voice ID: e641a479-f67a-495b-9e8d-3ac4ab640313
