@@ -17,9 +17,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Discover/Scenes/Discover.unity
     guid: 0543e87c0093a2c419c1c09ff6873b02
-  - enabled: 1
+  - enabled: 0
     path: Assets/EricssonOperaInternship/Scenes/Karan/K1-CoLocn-TestingSpawnObjcts.unity
     guid: 6a582b845464f54478e090007402b6a1
+  - enabled: 1
+    path: Assets/EricssonOperaInternship/Scenes/Johanna/J1-ColocationNetworkedObjects.unity
+    guid: 4a601c505d12b854b9ed21c8a92f06b7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7d7a0e475fae1ad47bb84dbb1aa98284, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c8e364865e9455940bb653a1d5eb56fb, type: 2}
