@@ -11,6 +11,10 @@ public class FloorPointerObjectScript : MonoBehaviour
     private float distanceFromCenter;
     private Vector3 OriginLocation;
     private Vector3 FloorMarkerObjSansYaxisLocation;
+    public GameObject CeilingCubeObj;
+    public AudioClip audioClip;
+
+    AudioSource audSo;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +23,9 @@ public class FloorPointerObjectScript : MonoBehaviour
         DistanceValuesObj.text = "...";
         OriginLocation = new Vector3(0, 0, 0);
         FloorMarkerObjSansYaxisLocation = new Vector3(0, 0, 0);
+        CeilingCubeObj.SetActive(false);
+
+        audSo = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -36,6 +43,13 @@ public class FloorPointerObjectScript : MonoBehaviour
         distanceFromCenter = Vector3.Distance(FloorMarkerObjSansYaxisLocation, OriginLocation);
 
         DistanceValuesObj.text = "Distance from Origin : " + distanceFromCenter.ToString("F1");
+
+        if (OVRInput.GetUp(OVRInput.Button.One))
+        {
+            CeilingCubeObj.SetActive(true);
+            audSo.PlayOneShot(audioClip, 0.4f);
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+        }
     }
     
 }
