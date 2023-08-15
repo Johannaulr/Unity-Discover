@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using TMPro;
 
 public class MusicPlayerObjectScript : NetworkBehaviour
 {
@@ -11,6 +12,8 @@ public class MusicPlayerObjectScript : NetworkBehaviour
 
     AudioSource audSo;
     public AudioClip TrackToPlay;
+
+    public TMP_Text DebuggerTextObject;
     private void Awake()
     {
         pjos = FindObjectOfType<PlayerJoinedObjectScript>();
@@ -21,7 +24,6 @@ public class MusicPlayerObjectScript : NetworkBehaviour
     {
         HostText = pjos.TextObjectPlayerType.text;
         MusicStartedFlag = false;
-        audSo = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class MusicPlayerObjectScript : NetworkBehaviour
             if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger) && MusicStartedFlag == false)
             {
                 RPC_PlayAudioClip();
+                DebuggerTextObject.text = "Pressed Right Index Trigger";
             }
         }
     }
@@ -39,7 +42,8 @@ public class MusicPlayerObjectScript : NetworkBehaviour
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     private void RPC_PlayAudioClip()
     {
-        audSo.PlayOneShot(TrackToPlay, 1.0f);
+        audSo = GetComponent<AudioSource>();
+        audSo.PlayOneShot(TrackToPlay, 0.66f);
         MusicStartedFlag = true;
     }
 }
