@@ -14,6 +14,9 @@ public class PlayerJoinedObjectScript : MonoBehaviour, INetworkRunnerCallbacks
 
     public TMP_Text textObject;
     public TMP_Text TextObjectPlayerType;
+    public TMP_Text DebuggerTextObject;
+    public NetworkObject NwAudioPrefab;
+
 
     [SerializeField] private NetworkRunner networkRunner;
 
@@ -67,16 +70,29 @@ public class PlayerJoinedObjectScript : MonoBehaviour, INetworkRunnerCallbacks
         textObject.text = messageReceived;
     }
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) 
+    {
+        if (hostFlag)
+        {
+            networkRunner.Spawn(NwAudioPrefab, Vector3.zero, Quaternion.identity);
+            DebuggerTextObject.text = "host audio spawned";
+        }
+        else
+        {
+            networkRunner.Spawn(NwAudioPrefab, Vector3.zero, Quaternion.identity);
+        }
+    }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
-    public void OnConnectedToServer(NetworkRunner runner) 
+    public void OnConnectedToServer(NetworkRunner runner)
     {
-        if (networkRunner.IsSharedModeMasterClient) 
+        if (networkRunner.IsSharedModeMasterClient)
         {
             TextObjectPlayerType.text = "You are HOST";
+            hostFlag = true;
+            //networkRunner.Spawn(NwAudioPrefab, Vector3.zero, Quaternion.identity);
         }
     }
     public void OnDisconnectedFromServer(NetworkRunner runner) { }
