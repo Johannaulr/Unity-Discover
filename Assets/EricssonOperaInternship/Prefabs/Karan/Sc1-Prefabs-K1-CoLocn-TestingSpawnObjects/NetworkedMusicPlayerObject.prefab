@@ -136,6 +136,36 @@ MonoBehaviour:
   _interpolationDataSource: 0
   SpherePrefabToSpawn:
     RawGuidValue: cf4d57d6e6d4cba42965287443864dbd
+  TriggerAudioStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5616665091697562079}
+        m_TargetAssemblyTypeName: AudioPlayerObject_New_Script, Assembly-CSharp
+        m_MethodName: PlayAudioTrack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TriggerAudioStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5616665091697562079}
+        m_TargetAssemblyTypeName: AudioPlayerObject_New_Script, Assembly-CSharp
+        m_MethodName: StopAudioTrack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   audioObject: {fileID: 5616665091697562079}
 --- !u!1 &6151060977080630583
 GameObject:
