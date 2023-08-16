@@ -4,31 +4,47 @@ using UnityEngine;
 
 public class EnablePassthrough : MonoBehaviour
 {
+    public int defaultLayerIndex;
+    public int insidePortalLayerIndex;
+    public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
     public GameObject[] insidePortalGameObjects;
+    public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
-            Vector3 targetVelocity = other.GetComponent<VelocityEstimator>().GetVelocityEstimate();
+            Vector3 playerVelocity = other.GetComponent<VelocityEstimator>().GetVelocityEstimate();
 
-            float angle = Vector3.Angle(transform.forward, targetVelocity);
+            float playerAngle = Vector3.Angle(transform.forward, playerVelocity);
 
-            if (angle < 90)
+            if (playerAngle < 90)
             {
                 foreach (var item in insidePortalGameObjects)
                 {
-                    SetLayerRecursively(item, 6);
+                    SetLayerRecursively(item, insidePortalLayerIndex);
+                }
+
+                foreach (var item in outsidePortalGameObjects)
+                {
+                    SetLayerRecursively(item, defaultLayerIndex);
                 }
             }
         }
 
-        if (other.CompareTag(grabbableTag))
+ /*      if (other.CompareTag(grabbableTag))
         {
-            SetLayerRecursively(other.gameObject, 0);
-        }
+            Vector3 objectVelocity = other.GetComponent<VelocityEstimator>().GetVelocityEstimate();
+
+            float objectAngle = Vector3.Angle(transform.forward, objectVelocity);
+
+            if (objectAngle < 90)
+            {
+                SetLayerRecursively(other.gameObject, defaultLayerIndex);
+            }
+        }*/
     }
 
     private void SetLayerRecursively(GameObject obj, int targetLayer)

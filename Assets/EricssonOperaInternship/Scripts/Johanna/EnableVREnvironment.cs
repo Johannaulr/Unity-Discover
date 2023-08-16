@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnableVREnvironment : MonoBehaviour
 {
+    public int defaultLayerIndex;
+    public int insidePortalLayerIndex;
+    public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
     public GameObject[] insidePortalGameObjects;
+    public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,17 +32,16 @@ public class EnableVREnvironment : MonoBehaviour
 
                     else
                     {
-                        SetLayerRecursively(item, 0);
+                        SetLayerRecursively(item, defaultLayerIndex);
                     }
 
                 }
+
+                foreach (var item in outsidePortalGameObjects)
+                {
+                    SetLayerRecursively(item, outsidePortalLayerIndex);
+                }
             }
-        }
-
-
-        if (other.CompareTag(grabbableTag))
-        {
-            SetLayerRecursively(other.gameObject, 6);
         }
     }
 
