@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnablePassthrough : MonoBehaviour
 {
-    public string targetTag;
+    public string playerTag;
+    public string grabbableTag;
     public GameObject[] insidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(targetTag))
+        if (other.CompareTag(playerTag))
         {
             Vector3 targetVelocity = other.GetComponent<VelocityEstimator>().GetVelocityEstimate();
 
@@ -22,6 +23,11 @@ public class EnablePassthrough : MonoBehaviour
                     SetLayerRecursively(item, 6);
                 }
             }
+        }
+
+        if (other.CompareTag(grabbableTag))
+        {
+            SetLayerRecursively(other.gameObject, 0);
         }
     }
 
