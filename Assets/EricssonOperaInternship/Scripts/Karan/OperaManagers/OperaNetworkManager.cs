@@ -19,6 +19,8 @@ public class OperaNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public UnityEvent OnConnectionStarted;
     public UnityEvent<string> OnNetworkEvent;
 
+    public GameObject JoiningUIPanel;
+
     private void Awake()
     {
         m_networkRunner.AddCallbacks(this);
@@ -63,6 +65,8 @@ public class OperaNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         OperaGameManager.instance.DebugLogMessage("Player Joined");
+
+        JoiningUIPanel.SetActive(false);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
@@ -78,6 +82,7 @@ public class OperaNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             OperaGameManager.instance.SetHostInFusionServer(true);
             Debug.Log("Spawn Colocation Prefab");
+            OperaGameManager.instance.DebugLogMessage("Spawn Colocation Prefab");
             _ = m_networkRunner.Spawn(m_colocationPrefab);
         }
     }

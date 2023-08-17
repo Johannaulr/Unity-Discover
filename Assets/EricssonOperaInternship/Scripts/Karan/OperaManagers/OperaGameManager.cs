@@ -17,13 +17,16 @@ public enum OperaTypesRPC
 
 public class OperaGameManager : MonoBehaviour
 {
+    //this line makes it Singleton
+    public static OperaGameManager instance;
+
+
     public string networkSessionName = "OperaXR";
     public OperaNetworkManager mainNetworkManager;
     public AudioRPCManager audioRpcController;
 
     private bool isHostInFusionServer = false;
 
-    public static OperaGameManager instance;
 
     private void Awake()
     {
@@ -43,6 +46,11 @@ public class OperaGameManager : MonoBehaviour
     public void SetHostInFusionServer(bool isHost)
     {
         isHostInFusionServer = isHost;
+
+        if (isHostInFusionServer)
+        {
+            audioRpcController.RequestStateAuthority();
+        }
     }
 
     public void SendRPC(OperaTypesRPC rpcType)
@@ -52,7 +60,6 @@ public class OperaGameManager : MonoBehaviour
             case OperaTypesRPC.PlayAudio:
                 if (isHostInFusionServer)
                 {
-                    //audioRpcController.RequestStateAuthority();
                     audioRpcController.RPC_PlayAudioClip();
                     DebugLogMessage($"Host triggered RPC {rpcType}");
                 }
