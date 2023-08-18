@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnableVREnvironment : MonoBehaviour
 {
+    public PortalAudioManager audioManager;
+
     public int defaultLayerIndex;
     public int insidePortalLayerIndex;
     public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
     public GameObject[] insidePortalGameObjects;
-    public GameObject[] outsidePortalGameObjects;
+    //public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,10 +39,12 @@ public class EnableVREnvironment : MonoBehaviour
 
                 }
 
-                foreach (var item in outsidePortalGameObjects)
+                /*foreach (var item in outsidePortalGameObjects)
                 {
                     SetLayerRecursively(item, outsidePortalLayerIndex);
-                }
+                }*/
+
+                audioManager.PlayAmbientLoop();
             }
         }
     }

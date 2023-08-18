@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnablePassthrough : MonoBehaviour
 {
+    public PortalAudioManager audioManager;
+
     public int defaultLayerIndex;
     public int insidePortalLayerIndex;
     public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
     public GameObject[] insidePortalGameObjects;
-    public GameObject[] outsidePortalGameObjects;
+    //public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,24 +29,14 @@ public class EnablePassthrough : MonoBehaviour
                     SetLayerRecursively(item, insidePortalLayerIndex);
                 }
 
-                foreach (var item in outsidePortalGameObjects)
+                /*foreach (var item in outsidePortalGameObjects)
                 {
                     SetLayerRecursively(item, defaultLayerIndex);
-                }
+                }*/
+
+                audioManager.StopAmbientLoop();
             }
         }
-
- /*      if (other.CompareTag(grabbableTag))
-        {
-            Vector3 objectVelocity = other.GetComponent<VelocityEstimator>().GetVelocityEstimate();
-
-            float objectAngle = Vector3.Angle(transform.forward, objectVelocity);
-
-            if (objectAngle < 90)
-            {
-                SetLayerRecursively(other.gameObject, defaultLayerIndex);
-            }
-        }*/
     }
 
     private void SetLayerRecursively(GameObject obj, int targetLayer)
