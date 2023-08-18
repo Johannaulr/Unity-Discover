@@ -24,6 +24,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
     public string networkSessionName = "XRminiPerformance";
     public MiniPerf_Script_NetworkManager mainNetworkManager;
     public MiniPerf_Script_AudioRPCManager audioRpcController;
+    public MiniPerf_Script_PassThruRPCManager PassThruRPCController;
 
     private bool isHostInFusionServer = false;
 
@@ -50,6 +51,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
         if (isHostInFusionServer)
         {
             audioRpcController.RequestStateAuthority();
+            PassThruRPCController.RequestStateAuthority();
         }
     }
 
@@ -82,8 +84,6 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
             default:
                 break;
         }
-
-
     }
 
     public void DebugLogMessage(string text)
