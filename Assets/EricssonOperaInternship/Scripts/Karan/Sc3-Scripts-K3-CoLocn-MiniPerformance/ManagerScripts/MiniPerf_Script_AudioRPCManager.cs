@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class AudioRPCManager : NetworkBehaviour
+public class MiniPerf_Script_AudioRPCManager : NetworkBehaviour
 {
     public AudioSource audioSource;
 
@@ -16,19 +16,13 @@ public class AudioRPCManager : NetworkBehaviour
     /// </summary>
     public async void RequestStateAuthority()
     {
-        await SharedAuthorityExtensions.WaitForStateAuthority(Object);   // what does this line return ?
+        await MiniPerf_Script_SharedAuthorityExtensions.WaitForStateAuthority(Object);   // what does this line return ?
     }
 
-
-    // is the RequestStateAuthority() function being called ?
-    // How to call the RequestStateAuthority() function ,
-    // on or for this script from the HOST of the Session ?
-    // Does it neeed to have a reference to the Runner of the Session ? 
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_PlayAudioClip()
     {
-        //RequestStateAuthority();
         if (audioSource != null && !musicStarted)
         {
             audioSource.volume = 0.9f;
@@ -47,3 +41,4 @@ public class AudioRPCManager : NetworkBehaviour
         }
     }
 }
+
