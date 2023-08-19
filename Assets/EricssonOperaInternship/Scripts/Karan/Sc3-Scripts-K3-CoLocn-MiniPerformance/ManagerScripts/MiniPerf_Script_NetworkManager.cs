@@ -32,6 +32,7 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
     {
         OnConnectionStarted?.Invoke();
         OnNetworkEvent?.Invoke("Connecting to Photon...");
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage("Connecting to Photon...");
         ColocationDriverNetObj.OnColocationCompletedCallback += OnColocationReady;
         await Connect(isHost);
     }
@@ -41,7 +42,7 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
         var args = new StartGameArgs()
         {
             GameMode = GameMode.Shared,
-            SessionName = OperaGameManager.instance.networkSessionName,
+            SessionName = MiniPerf_Script_SceneManager.instance.networkSessionName,
             Scene = SceneManager.GetActiveScene().buildIndex,
             SceneManager = m_sceneManager
         };
@@ -53,36 +54,36 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
         if (success)
         {
             OnNetworkEvent?.Invoke("Colocation Ready");
-            OperaGameManager.instance.DebugLogMessage("Colocation Ready");
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Colocation Ready");
         }
         else
         {
             OnNetworkEvent?.Invoke("Joined Remotely");
-            OperaGameManager.instance.DebugLogMessage("Joined Remotely");
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Joined Remotely");
         }
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        OperaGameManager.instance.DebugLogMessage("Player Joined");
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage("Player Joined");
 
-        JoiningUIPanel.SetActive(false);
+        //JoiningUIPanel.SetActive(false);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
-        OperaGameManager.instance.DebugLogMessage("Player Left");
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage("Player Left");
     }
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
-        OperaGameManager.instance.DebugLogMessage("Connected to Server");
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage("Connected to Photon");
         OnNetworkEvent?.Invoke("Connected To Photon");
         if (m_networkRunner.IsMasterClient())
         {
-            OperaGameManager.instance.SetHostInFusionServer(true);
+            MiniPerf_Script_SceneManager.instance.SetHostInFusionServer(true);
             Debug.Log("Spawn Colocation Prefab");
-            OperaGameManager.instance.DebugLogMessage("Spawn Colocation Prefab");
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Spawn Colocation Prefab");
             _ = m_networkRunner.Spawn(m_colocationPrefab);
         }
     }

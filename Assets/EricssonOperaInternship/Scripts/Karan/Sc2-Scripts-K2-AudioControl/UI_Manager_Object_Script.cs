@@ -23,9 +23,9 @@ public class UI_Manager_Object_Script : MonoBehaviour
         }
     }
 
-    private void CheckDebugUIFunction(bool showValue)
+    private void CheckDebugUIFunction(bool showUIFlag)
     {
-        if (showValue)
+        if (showUIFlag)
         {
             DebugUICanvas.SetActive(true);
         }

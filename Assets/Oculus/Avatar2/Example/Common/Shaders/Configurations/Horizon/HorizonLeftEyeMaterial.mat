@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - MATERIAL_MODE_TEXTURE
   - _LIGHTING_SYSTEM_UNITY
   - _SHADER_TYPE_LEFT_EYE
   m_InvalidKeywords: []
@@ -71,6 +72,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Material_Mode: 0
     - _AmbientOcclusionEffect: 1
     - _BacklightScale: 0.2
     - _BumpScale: 1
@@ -81,6 +83,7 @@ Material:
     - _DirectOcclusionEffect: 1
     - _Distortion: 0.5
     - _DstBlend: 0
+    - _EyeGlintFactor: 10
     - _EyeUVScale: 0.5
     - _EyeXMax: 1
     - _EyeXMid: 0.5

@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - BRDF_LUT_MODE_ON
+  - MATERIAL_MODE_TEXTURE
   m_InvalidKeywords:
   - DEBUG_NONE
   m_LightmapFlags: 4
@@ -97,6 +98,7 @@ Material:
     m_Floats:
     - BRDF_LUT_Mode: 0
     - Debug: 0
+    - Material_Mode: 0
     - ToneMap: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -119,6 +121,7 @@ Material:
     - u_DiffuseSmoothingFactor: 1
     - u_EmissiveSet: 0
     - u_Exposure: 1
+    - u_EyeGlintColorFactor: 1
     - u_EyeGlintFactor: 10
     - u_F0Factor: 1
     - u_MetallicFactor: 1
@@ -128,9 +131,12 @@ Material:
     - u_OcclusionSet: 0
     - u_OcclusionStrength: 1
     - u_RoughnessFactor: 1
+    - u_ThicknessFactor: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - u_BaseColorFactor: {r: 1, g: 1, b: 1, a: 1}
     - u_EmissiveFactor: {r: 1, g: 1, b: 1, a: 1}
+    - u_SkinORMFactor: {r: 1, g: 1, b: 1, a: 1}
+    - u_SubsurfaceColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

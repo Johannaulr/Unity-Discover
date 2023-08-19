@@ -10,8 +10,8 @@ public enum MiniPerfRPCtypes
 {
     PlayAudio,
     StopAudio,
-    SpawnCube,
-    DestroyCube
+    DarkPassThru,
+    NormalPassThru
 }
 
 
@@ -75,10 +75,20 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes.SpawnCube:
+            case MiniPerfRPCtypes.DarkPassThru:
+                if (isHostInFusionServer)
+                {
+                    PassThruRPCController.RPC_PassThruDark();
+                    DebugLogMessage($"Host triggered RPC {rpcType}");
+                }
                 break;
             
-            case MiniPerfRPCtypes.DestroyCube:
+            case MiniPerfRPCtypes.NormalPassThru:
+                if (isHostInFusionServer)
+                {
+                    PassThruRPCController.RPC_PassThruNormal();
+                    DebugLogMessage($"Host triggered RPC {rpcType}");
+                }
                 break;
             
             default:

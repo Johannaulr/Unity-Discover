@@ -28,13 +28,13 @@ public class MiniPerf_Script_PassThruRPCManager : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_PassThruDark()
     {
-        PassThruComponent.textureOpacity = 0.1f; ;
+        PassThruComponent.textureOpacity = 0.05f;
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_PassThruNormal()
     {
-        PassThruComponent.textureOpacity = 1.0f; ;
+        PassThruComponent.textureOpacity = 1.0f;
     }
 }
 
