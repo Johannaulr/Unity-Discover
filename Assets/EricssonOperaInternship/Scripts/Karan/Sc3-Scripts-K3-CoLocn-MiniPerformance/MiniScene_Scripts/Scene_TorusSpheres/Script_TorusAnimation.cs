@@ -5,6 +5,7 @@ using UnityEngine;
 public class Script_TorusAnimation : MonoBehaviour
 {
     public static bool startTorusAnimationFlag;
+    public static bool DisplayedOnDebuggerFlag;
     private float PosY;
     private float yMoveStepSize;
     private float PosYFinal;
@@ -12,26 +13,34 @@ public class Script_TorusAnimation : MonoBehaviour
     void Start()
     {
         startTorusAnimationFlag = false;
+        DisplayedOnDebuggerFlag = false;
         PosY = transform.position.y;
-        yMoveStepSize = 0.5f;
-        PosYFinal = 2;
+        yMoveStepSize = 0.25f;
+        PosYFinal = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startTorusAnimationFlag)
+        if (startTorusAnimationFlag && PosY <= PosYFinal)
         {
-            MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Torus Anim Start");
             StartTorusAnimationFn();
         }
+
+        if (DisplayedOnDebuggerFlag)
+        {
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Torus Anim Start");
+            DisplayedOnDebuggerFlag = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
     }
 
     void StartTorusAnimationFn()
     {
-        if(PosY <= PosYFinal)
-        {
-            PosY += Time.deltaTime * yMoveStepSize;
-        }
+         PosY += Time.deltaTime * yMoveStepSize;
     }
 }

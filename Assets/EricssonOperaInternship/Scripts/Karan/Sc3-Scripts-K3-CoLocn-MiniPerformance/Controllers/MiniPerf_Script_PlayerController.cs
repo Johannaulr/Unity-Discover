@@ -47,6 +47,8 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
         if (OVRInput.GetUp(OVRInput.RawButton.Y))
         {
             Script_TorusAnimation.startTorusAnimationFlag = true;
+            Script_TorusAnimation.DisplayedOnDebuggerFlag = true;
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Y button Pressed");
         }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - Bike_Pedal_L
   - Bike_Pedal_R
   - Grabbable
+  - Sph
   layers:
   - Default
   - TransparentFX
