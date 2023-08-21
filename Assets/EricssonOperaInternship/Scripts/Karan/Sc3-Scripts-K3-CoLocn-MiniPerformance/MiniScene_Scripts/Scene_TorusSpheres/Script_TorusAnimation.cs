@@ -15,7 +15,7 @@ public class Script_TorusAnimation : MonoBehaviour
         startTorusAnimationFlag = false;
         DisplayedOnDebuggerFlag = false;
         PosY = transform.position.y;
-        yMoveStepSize = 0.25f;
+        yMoveStepSize = 0.4f;
         PosYFinal = 3;
     }
 

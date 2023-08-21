@@ -13,21 +13,24 @@ public class Script_SpheresAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         spheresArray = GameObject.FindGameObjectsWithTag("Sph");
 
         for (int i = 0; i < 9; i++)
         {
             phaseShift[i] = i * 2;
         }
+        */
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        /*
         for (int i = 0; i < 9; i++)
         {
             spheresArray[i].transform.position = new Vector3(spheresArray[i].transform.position.x, spheresArray[i].transform.position.y + (Mathf.Sin(speedUpDown * Time.time) * distanceUpDown), spheresArray[i].transform.position.z);
         }
+        */
     }
 }
