@@ -27,7 +27,7 @@ namespace FullscreenEditor {
 
         #region Fields
         //Always end with an space if the path has no shortcut
-        [DynamicMenuItem(true)] public const string TOOLBAR_PATH = "Fullscreen/Show Toolbar _F8";
+        [DynamicMenuItem(true)] public const string TOOLBAR_PATH = "Fullscreen/Show Toolbar %F8";
         [DynamicMenuItem(true)] public const string FULLSCREEN_ON_PLAY_PATH = "Fullscreen/Fullscreen On Play ";
         [DynamicMenuItem(true)] public const string PREFERENCES_PATH = "Fullscreen/Preferences... ";
         [DynamicMenuItem(false)] public const string CURRENT_VIEW_PATH = "Fullscreen/Focused View %F9";
