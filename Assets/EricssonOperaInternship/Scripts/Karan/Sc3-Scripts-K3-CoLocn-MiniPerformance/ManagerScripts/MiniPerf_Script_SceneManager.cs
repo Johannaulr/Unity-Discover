@@ -11,7 +11,8 @@ public enum MiniPerfRPCtypes
     PlayAudio,
     StopAudio,
     DarkPassThru,
-    NormalPassThru
+    NormalPassThru,
+    StartTorus
 }
 
 
@@ -25,6 +26,8 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
     public MiniPerf_Script_NetworkManager mainNetworkManager;
     public MiniPerf_Script_AudioRPCManager audioRpcController;
     public MiniPerf_Script_PassThruRPCManager PassThruRPCController;
+
+    public MiniPerf_Script_TorusRPCManager TorusRPCController;
 
     private bool isHostInFusionServer = false;
 
@@ -52,6 +55,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
         {
             audioRpcController.RequestStateAuthority();
             PassThruRPCController.RequestStateAuthority();
+            TorusRPCController.RequestStateAuthority();
         }
     }
 
@@ -90,7 +94,15 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                     DebugLogMessage($"Host triggered RPC {rpcType}");
                 }
                 break;
-            
+
+            case MiniPerfRPCtypes.StartTorus:
+                if (isHostInFusionServer)
+                {
+                    TorusRPCController.RPC_ShowTorus();
+                    DebugLogMessage($"Host triggered RPC {rpcType}");
+                }
+                break;
+
             default:
                 break;
         }
