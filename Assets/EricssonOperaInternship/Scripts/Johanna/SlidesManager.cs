@@ -1,49 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
-public class SlidesManager : MonoBehaviour
+public class SlidesManager : NetworkBehaviour
 {
-    public Canvas slidesCanvas;
-    private List<GameObject> slidesCollection;
-    private int m_newActiveSlideIndex;
-    private int m_oldActiveSlideIndex;
+    public List<Sprite> slidesCollection = new List<Sprite>();
+    public GameObject activeSlide;
 
+    public int activeSlideIndex;
+    [Networked(OnChanged =nameof(NetworkSlideIndexChanged))]
+    private int networkedActiveSlideIndex { get; set; }
+    private UnityEvent slideChangeEvent;
+    
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        m_newActiveSlideIndex = 0;
-        var panel = slidesCanvas.transform.GetChild(0);
+        activeSlideIndex = 0;
 
-        foreach (Transform slide in panel)
-        {
-            slidesCollection.Add(slide.gameObject);
-        }
+        ChangeSlide();
 
-        slidesCollection[m_newActiveSlideIndex].SetActive(true);
-        m_oldActiveSlideIndex = m_newActiveSlideIndex;
+        if (slideChangeEvent == null)
+            slideChangeEvent = new UnityEvent();
 
+        slideChangeEvent.AddListener(ChangeSlide);
     }
 
     // Update is called once per frame
     void Update()
     {
-        OVRInput.Update();
-
+        //Next slide
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
-            m_newActiveSlideIndex += 1;
+            activeSlideIndex += 1;
+
+            if (activeSlideIndex > slidesCollection.Count - 1)
+            {
+                activeSlideIndex = slidesCollection.Count - 1;
+            }
+            slideChangeEvent.Invoke();
         }
 
+        //Previous slide
         if (OVRInput.GetDown(OVRInput.Button.Two))
         {
-            m_newActiveSlideIndex -= 1;
+            activeSlideIndex -= 1;
+
+            if (activeSlideIndex < 0)
+            {
+                activeSlideIndex = 0;
+            }
+            slideChangeEvent.Invoke();
         }
+
     }
 
-    private void ChangeSlide(int newActiveSlide, int oldActiveSlide)
+    public void ChangeSlide()
     {
-        slidesCollection[newActiveSlide].SetActive(true);
-
+        activeSlide.GetComponent<Image>().sprite = slidesCollection[activeSlideIndex];
+        Debug.Log("Changing to slide " + activeSlideIndex);
     }
+    
+    public static void NetworkSlideIndexChanged(Changed<SlidesManager> changed)
+    {
+       changed.Behaviour.activeSlideIndex = changed.Behaviour.networkedActiveSlideIndex;
+       //slideChangeEvent.Invoke();
+    }
+
 }
