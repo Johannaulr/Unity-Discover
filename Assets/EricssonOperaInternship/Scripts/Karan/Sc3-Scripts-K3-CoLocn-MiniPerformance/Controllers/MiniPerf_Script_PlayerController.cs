@@ -9,6 +9,7 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
     private bool torusFlag;
     private bool torusActivationFlag;
 
+    public GameObject cubeContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
             if (torusFlag)
             {
-                
+                cubeContainer.SetActive(true);
             }
         }
     }
