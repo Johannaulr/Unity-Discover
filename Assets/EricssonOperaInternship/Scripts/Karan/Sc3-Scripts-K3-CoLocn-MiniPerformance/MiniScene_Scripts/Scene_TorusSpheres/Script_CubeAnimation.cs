@@ -14,7 +14,7 @@ public class Script_CubeAnimation : NetworkBehaviour
 
 
     [Networked(OnChanged = nameof(NetworkAnimationFlagChanged))]
-    public bool NetworkedAnimationStartFlag { get; set; }
+    public NetworkBool NetworkedAnimationStartFlag { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Script_CubeAnimation : NetworkBehaviour
         DisplayedOnDebuggerFlag = false;
         PosY = transform.position.y;
         yMoveStepSize = 0.8f;
-        PosYFinal = 3.5f;
+        PosYFinal = 3.0f;
     }
 
     // Update is called once per frame
