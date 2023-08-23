@@ -8,6 +8,8 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
     private bool passThruDarkFlag;
     private bool torusFlag;
     private bool torusActivationFlag;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +61,7 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
             if (torusFlag)
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.StartTorus);
-
-                Script_TorusAnimation.startTorusAnimationFlag = true;
-                Script_TorusAnimation.DisplayedOnDebuggerFlag = true;
-                MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Y button Pressed");
+                
             }
         }
     }
