@@ -10,79 +10,58 @@ public class SlidesManager : NetworkBehaviour
     public List<Sprite> slidesCollection = new List<Sprite>();
     public GameObject activeSlide;
 
-    public int activeSlideIndex = 0;
-
+    private int activeSlideIndexPrivate;
+    public int activeSlideIndexPublic;
 
     [Networked(OnChanged = nameof(NetworkSlideIndexChanged))]
-    private int networkedActiveSlideIndex
-    {
-        get
-        {
-            return networkedActiveSlideIndex;
-        }
-        set { networkedActiveSlideIndex = activeSlideIndex; }
-    }
-
-    private UnityEvent slideChangeEvent;
-
+    public int networkedActiveSlideIndex { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        //networkedActiveSlideIndex = 0;
-
-        //ChangeSlide();
-
-        if (slideChangeEvent == null)
-            slideChangeEvent = new UnityEvent();
-
-        slideChangeEvent.AddListener(ChangeSlide);
+        networkedActiveSlideIndex = 0;
+        activeSlideIndexPrivate = 0;
+        activeSlideIndexPublic = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         //Next slide
         if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown("s"))
         {
-            activeSlideIndex += 1;
+            activeSlideIndexPublic += 1;
 
-            if (activeSlideIndex > slidesCollection.Count - 1)
+            if (activeSlideIndexPublic > slidesCollection.Count - 1)
             {
-                activeSlideIndex = slidesCollection.Count - 1;
+                activeSlideIndexPublic = slidesCollection.Count - 1;
             }
-            //slideChangeEvent.Invoke();
-            ChangeSlide();
+            networkedActiveSlideIndex = activeSlideIndexPublic;
         }
 
         //Previous slide
         if (OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown("w"))
         {
-            activeSlideIndex -= 1;
+            activeSlideIndexPublic -= 1;
 
-            if (activeSlideIndex < 0)
+            if (activeSlideIndexPublic < 0)
             {
-                activeSlideIndex = 0;
+                activeSlideIndexPublic = 0;
             }
-            //slideChangeEvent.Invoke();
-            ChangeSlide();
+            networkedActiveSlideIndex = activeSlideIndexPublic;
         }
-
-
     }
 
     public void ChangeSlide()
     {
-        activeSlide.GetComponent<Image>().sprite = slidesCollection[activeSlideIndex];
-        Debug.Log("Changing to slide " + activeSlideIndex);
+        activeSlide.GetComponent<Image>().sprite = slidesCollection[activeSlideIndexPrivate];
+        Debug.Log("Changing to slide " + activeSlideIndexPrivate);
         Debug.Log("Networked index is " + networkedActiveSlideIndex);
     }
     
     public static void NetworkSlideIndexChanged(Changed<SlidesManager> changed)
     {
-       changed.Behaviour.networkedActiveSlideIndex = changed.Behaviour.activeSlideIndex;
-        //slideChangeEvent.Invoke();
-
+       changed.Behaviour.activeSlideIndexPrivate = changed.Behaviour.networkedActiveSlideIndex;
+       changed.Behaviour.ChangeSlide();
     }
-
 }
