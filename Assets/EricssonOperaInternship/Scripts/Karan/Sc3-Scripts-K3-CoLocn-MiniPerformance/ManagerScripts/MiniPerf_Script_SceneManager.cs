@@ -27,8 +27,6 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
     public MiniPerf_Script_AudioRPCManager audioRpcController;
     public MiniPerf_Script_PassThruRPCManager PassThruRPCController;
 
-    public MiniPerf_Script_TorusRPCManager TorusRPCController;
-
     private bool isHostInFusionServer = false;
 
 
@@ -55,7 +53,6 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
         {
             audioRpcController.RequestStateAuthority();
             PassThruRPCController.RequestStateAuthority();
-            TorusRPCController.RequestStateAuthority();
         }
     }
 
@@ -98,7 +95,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
             case MiniPerfRPCtypes.StartTorus:
                 if (isHostInFusionServer)
                 {
-                    TorusRPCController.RPC_ShowTorus();
+                    
                     DebugLogMessage($"Host triggered RPC {rpcType}");
                 }
                 break;

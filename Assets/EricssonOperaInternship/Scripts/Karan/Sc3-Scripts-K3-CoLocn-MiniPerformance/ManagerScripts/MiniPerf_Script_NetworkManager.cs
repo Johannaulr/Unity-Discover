@@ -21,6 +21,9 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
 
     public GameObject JoiningUIPanel;
 
+    public GameObject CubeContainerObject;
+    public GameObject CubNWprefab;
+
     private void Awake()
     {
         m_networkRunner.AddCallbacks(this);
@@ -68,6 +71,9 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
         MiniPerf_Script_SceneManager.instance.DebugLogMessage("Player Joined");
 
         //JoiningUIPanel.SetActive(false);
+
+        m_networkRunner.Spawn(CubNWprefab, new Vector3(0,0,0), Quaternion.identity);
+        CubNWprefab.transform.SetParent(CubeContainerObject.transform);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
