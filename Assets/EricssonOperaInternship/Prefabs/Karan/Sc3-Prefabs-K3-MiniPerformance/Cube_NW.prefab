@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6246224144787712915}
   - component: {fileID: 5604060720930067218}
   - component: {fileID: 2663878942382976289}
+  - component: {fileID: 6175095721912699935}
   m_Layer: 0
   m_Name: Cube_NW
   m_TagString: Untagged
@@ -89,6 +90,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 2663878942382976289}
+  - {fileID: 6175095721912699935}
   SimulationBehaviours: []
 --- !u!114 &2663878942382976289
 MonoBehaviour:
@@ -118,6 +120,21 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &6175095721912699935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221367947410903107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5429afd2b865e84f8200fe11ed2e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  DisplayedOnDebuggerFlag: 0
+  _NetworkedAnimationStartFlag: 0
 --- !u!1 &2567397397108502009
 GameObject:
   m_ObjectHideFlags: 0

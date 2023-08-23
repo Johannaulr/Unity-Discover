@@ -23,7 +23,7 @@ public class Script_CubeAnimation : NetworkBehaviour
         NetworkedAnimationStartFlag = false;
         DisplayedOnDebuggerFlag = false;
         PosY = transform.position.y;
-        yMoveStepSize = 0.4f;
+        yMoveStepSize = 0.8f;
         PosYFinal = 3.5f;
     }
 
@@ -51,6 +51,8 @@ public class Script_CubeAnimation : NetworkBehaviour
     private static void NetworkAnimationFlagChanged(Changed<Script_CubeAnimation> changed)
     {
         changed.Behaviour.startCubeAnimationFlag = changed.Behaviour.NetworkedAnimationStartFlag;
+
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage($"startCubeAnimationFlag : {changed.Behaviour.startCubeAnimationFlag}");
     }
 
     void StartAnimationFn()
@@ -58,8 +60,13 @@ public class Script_CubeAnimation : NetworkBehaviour
         PosY += Time.deltaTime * yMoveStepSize;
     }
 
-    public void SetAnimFlag(bool flagVal) 
+    public void SetAnimFlag(int val) 
     {
-        NetworkedAnimationStartFlag = flagVal;
+        if (val == 1) 
+        {
+            NetworkedAnimationStartFlag = true;
+        }
+
+        MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Player Sent Val : {val}");
     }
 }

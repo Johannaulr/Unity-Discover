@@ -68,7 +68,8 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
                 if (childScript != null)
                 {
-                    childScript.SetAnimFlag(true);
+                    childScript.SetAnimFlag(1);
+                    MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Anim PLEASE Start");
                 }
                 else
                 {
