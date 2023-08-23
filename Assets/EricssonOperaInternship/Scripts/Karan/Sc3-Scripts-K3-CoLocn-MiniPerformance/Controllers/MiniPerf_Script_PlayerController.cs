@@ -63,6 +63,17 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
             if (torusFlag)
             {
                 cubeContainer.SetActive(true);
+
+                Script_CubeAnimation childScript = cubeContainer.GetComponentInChildren<Script_CubeAnimation>();
+
+                if (childScript != null)
+                {
+                    childScript.SetAnimFlag(true);
+                }
+                else
+                {
+                    Debug.LogWarning("ChildScript not found on any child GameObject.");
+                }
             }
         }
     }
