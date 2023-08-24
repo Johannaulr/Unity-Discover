@@ -8,6 +8,9 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
     private bool passThruDarkFlag;
     private bool torusFlag;
     private bool torusActivationFlag;
+
+    public GameObject cubeContainer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +62,19 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
             if (torusFlag)
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.StartTorus);
+                cubeContainer.SetActive(true);
 
-                Script_TorusAnimation.startTorusAnimationFlag = true;
-                Script_TorusAnimation.DisplayedOnDebuggerFlag = true;
-                MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Y button Pressed");
+                Script_CubeAnimation childScript = cubeContainer.GetComponentInChildren<Script_CubeAnimation>();
+
+                if (childScript != null)
+                {
+                    childScript.SetAnimFlag(1);
+                    MiniPerf_Script_SceneManager.instance.DebugLogMessage($"Anim PLEASE Start");
+                }
+                else
+                {
+                    Debug.LogWarning("ChildScript not found on any child GameObject.");
+                }
             }
         }
     }
