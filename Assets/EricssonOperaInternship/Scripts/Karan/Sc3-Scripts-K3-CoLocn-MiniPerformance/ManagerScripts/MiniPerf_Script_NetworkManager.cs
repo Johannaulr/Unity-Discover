@@ -75,6 +75,7 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
         var cubeTest = m_networkRunner.Spawn(CubNWprefab, new Vector3(0,0,0), Quaternion.identity);
         cubeTest.transform.SetParent(CubeContainerObject.transform);
         CubeContainerObject.SetActive(false);
+        
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
