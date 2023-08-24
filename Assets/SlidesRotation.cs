@@ -27,13 +27,13 @@ public class SlidesRotation : NetworkBehaviour
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+        if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
 
         }
 
-        if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+        if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             networkedRotationY = rectTransform.rotation.y;
         }

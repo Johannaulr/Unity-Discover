@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &106755014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106755013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.008}
+  m_LocalPosition: {x: 0, y: 0, z: 2.477}
   m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -333,7 +333,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 133633
+  Flags: 2561
   NetworkGuid:
     RawGuidValue: 39d99cd9246944d2a56319b5e0e1c3c0
   NestedObjects: []
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 133633
+  Flags: 2561
   NetworkGuid:
     RawGuidValue: 79bc195076a04934a6797d7cec6711a6
   NestedObjects: []
@@ -2753,7 +2753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2702451128519301429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,7 +3188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2639710135240946419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.76199996, z: -2.289}
+  m_LocalPosition: {x: 0, y: 0.76199996, z: 2.477}
   m_LocalScale: {x: 0.050000004, y: 0.049999997, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3211,4 +3211,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachedSlides: {fileID: 106755013}
-  offset: {x: 0, y: 1, z: 0}
+  offset: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ public class SlidesManager : NetworkBehaviour
 {
     public List<Sprite> slidesCollection = new List<Sprite>();
     public GameObject activeSlide;
+    //private NetworkRunner sessionRunner;
 
     private int activeSlideIndexPrivate;
     public int activeSlideIndexPublic;
@@ -24,11 +25,13 @@ public class SlidesManager : NetworkBehaviour
         activeSlideIndexPublic = 0;
     }
 
+
+    // PlayerRef = IsSharedModeMasterClient
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
         //Next slide
-        if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetKeyDown("s"))
+        if (OVRInput.GetDown(OVRInput.Button.One) && Runner.IsSharedModeMasterClient)
         {
             activeSlideIndexPublic += 1;
 
@@ -40,7 +43,7 @@ public class SlidesManager : NetworkBehaviour
         }
 
         //Previous slide
-        if (OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown("w"))
+        if (OVRInput.GetDown(OVRInput.Button.Two) && Runner.IsSharedModeMasterClient)
         {
             activeSlideIndexPublic -= 1;
 
