@@ -6,17 +6,17 @@ namespace Oculus.Interaction {
     public class SlidesGrabBall : MonoBehaviour
     {
         public GameObject attachedSlides;
-        public Vector3 offset;
+        public Vector3 slidesOffset;
 
-    // Start is called before the first frame update
-    void Start()
+        // Start is called before the first frame update
+        void Start()
         {
         }
 
         // Update is called once per frame
         void Update()
         {
-            attachedSlides.transform.position = transform.position + offset;
+            attachedSlides.transform.position = transform.position + slidesOffset;
         }
     }
 }
