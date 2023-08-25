@@ -20,11 +20,10 @@ public class SlidesManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        networkedActiveSlideIndex = 0;
+        //networkedActiveSlideIndex = 0;
         activeSlideIndexPrivate = 0;
         activeSlideIndexPublic = 0;
     }
-
 
     // PlayerRef = IsSharedModeMasterClient
     // Update is called once per frame
