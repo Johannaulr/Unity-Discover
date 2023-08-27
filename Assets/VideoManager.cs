@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class VideoManager : NetworkBehaviour
 {
-    public GameObject firstVideo;
-    public GameObject secondVideo;
+    public NetworkObject firstVideo;
+    public NetworkObject secondVideo;
     private Transform videoContainer;
 
     private bool firstVideoSpawned;
@@ -34,8 +34,8 @@ public class VideoManager : NetworkBehaviour
     {
         if (firstVideoSpawned)
         {
-            Runner.Despawn(GameObject.Find("Video Canvas 1(Clone)").GetComponent<NetworkObject>(), false);
-            Destroy(GameObject.Find("Video Canvas 1"));
+            Runner.Despawn(firstVideo);
+            //Destroy(GameObject.Find("Video Canvas 1"));
             Debug.Log("Despawning firstVideo");
             firstVideoSpawned = false;
             Debug.Log("FirstVideoSpawned: " + firstVideoSpawned);
@@ -58,8 +58,8 @@ public class VideoManager : NetworkBehaviour
     {
         if (secondVideo)
         {
-            Runner.Despawn(GameObject.Find("Video Canvas 2(Clone)").GetComponent<NetworkObject>(), false);
-            Destroy(GameObject.Find("Video Canvas 2"));
+            Runner.Despawn(secondVideo);
+            //Destroy(GameObject.Find("Video Canvas 2"));
             Debug.Log("Despawning secondVideo");
             secondVideoSpawned = false;
             Debug.Log("SecondVideoSpawned: " + secondVideoSpawned);

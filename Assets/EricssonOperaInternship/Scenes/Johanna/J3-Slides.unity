@@ -1583,8 +1583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  firstVideo: {fileID: 5216868263885369897, guid: df78928cb56e0b54c907499328e8c873, type: 3}
-  secondVideo: {fileID: 5216868263885369897, guid: 06afbd9c8acff644f98bf51598b2087d, type: 3}
+  firstVideo: {fileID: 6219430055243609919, guid: df78928cb56e0b54c907499328e8c873, type: 3}
+  secondVideo: {fileID: 6219430055243609919, guid: 06afbd9c8acff644f98bf51598b2087d, type: 3}
 --- !u!4 &1042010376
 Transform:
   m_ObjectHideFlags: 0
