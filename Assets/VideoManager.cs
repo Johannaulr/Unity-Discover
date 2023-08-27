@@ -5,41 +5,66 @@ using UnityEngine;
 
 public class VideoManager : NetworkBehaviour
 {
-    public NetworkObject firstVideo;
-    public NetworkObject secondVideo;
+    public GameObject firstVideo;
+    public GameObject secondVideo;
     private Transform videoContainer;
+
+    private bool firstVideoSpawned;
+    private bool secondVideoSpawned;
 
     private void Start()
     {
         videoContainer = GameObject.Find("Video Container").transform;
+        firstVideoSpawned = false;
+        secondVideoSpawned = false;
     }
 
     public void PlayFirstVideo()
     {
-        Runner.Spawn(firstVideo);
-
-        //firstVideo.transform.SetParent(videoContainer, false);
+        if (!firstVideoSpawned)
+        {
+            Runner.Spawn(firstVideo);
+            firstVideo.transform.SetParent(videoContainer);
+            firstVideoSpawned = true;
+            Debug.Log("FirstVideoSpawned: " + firstVideoSpawned);
+        }
     }
 
     public void StopFirstVideo()
     {
-        firstVideo.RequestStateAuthority();
-        Runner.Despawn(firstVideo,true);
-        Debug.Log("Despawning firstVideo");
+        if (firstVideoSpawned)
+        {
+            Runner.Despawn(GameObject.Find("Video Canvas 1(Clone)").GetComponent<NetworkObject>(), false);
+            Destroy(GameObject.Find("Video Canvas 1"));
+            Debug.Log("Despawning firstVideo");
+            firstVideoSpawned = false;
+            Debug.Log("FirstVideoSpawned: " + firstVideoSpawned);
+        }
+
     }
 
     public void PlaySecondVideo()
     {
-        Runner.Spawn(secondVideo);
-        //secondVideo.transform.SetParent(videoContainer, false);
+        if (!secondVideoSpawned)
+        {
+            Runner.Spawn(secondVideo);
+            secondVideo.transform.SetParent(videoContainer);
+            secondVideoSpawned = true;
+            Debug.Log("SecondVideoSpawned: " + secondVideoSpawned);
+        }
     }
 
     public void StopSecondVideo()
     {
-        secondVideo.RequestStateAuthority();
-        Runner.Despawn(secondVideo, false);
-        //Runner.Despawn(secondVideo);
-        Debug.Log("Despawning secondVideo");
+        if (secondVideo)
+        {
+            Runner.Despawn(GameObject.Find("Video Canvas 2(Clone)").GetComponent<NetworkObject>(), false);
+            Destroy(GameObject.Find("Video Canvas 2"));
+            Debug.Log("Despawning secondVideo");
+            secondVideoSpawned = false;
+            Debug.Log("SecondVideoSpawned: " + secondVideoSpawned);
+        }
+
     }
 
 }
