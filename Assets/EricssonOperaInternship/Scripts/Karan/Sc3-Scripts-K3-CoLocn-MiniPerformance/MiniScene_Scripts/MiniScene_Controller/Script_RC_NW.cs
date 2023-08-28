@@ -5,7 +5,7 @@ using Fusion;
 
 public class Script_RC_NW : NetworkBehaviour
 {
-    public NetworkObject VideoBoxPrefab;
+    //public NetworkObject VideoBoxPrefab;
     public GameObject sceneCamera;
     private bool VideoBoxSpawnedFlag;
     private Vector3 targetPosition;
@@ -35,9 +35,9 @@ public class Script_RC_NW : NetworkBehaviour
                 targetPosition = sceneCamera.transform.position;
                 targetRotation = sceneCamera.transform.rotation;
 
-                MiniPerf_Script_SceneManager.instance.DebugLogMessage("Spawn VideoBox");
+                //MiniPerf_Script_SceneManager.instance.DebugLogMessage("Spawn VideoBox");
 
-                Runner.Spawn(VideoBoxPrefab, position: targetPosition, rotation: targetRotation);
+                //Runner.Spawn(VideoBoxPrefab, position: targetPosition, rotation: targetRotation);
                 VideoBoxSpawnedFlag = true;
             }
         }
