@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
+    public GameObject portal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,7 @@ public class ExperienceManager : MonoBehaviour
 
     public void SpawnPortal()
     {
+        portal.SetActive(true);
     }
 
     public void TriggerVR()
