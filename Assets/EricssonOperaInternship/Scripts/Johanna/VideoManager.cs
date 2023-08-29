@@ -66,9 +66,10 @@ public class VideoManager : NetworkBehaviour
 
     public void PlayFirstVideo()
     {
-        firstVideoInstance = Instantiate(firstVideo, new Vector3(0, 0, 0), Quaternion.identity);
+        firstVideoInstance = Instantiate(firstVideo);
         firstVideoInstance.transform.parent = videoContainer;
-        firstVideoInstance.transform.rotation = Quaternion.Euler(0, videoContainer.rotation.y, 0);
+        firstVideoInstance.transform.localPosition = Vector3.zero;
+        firstVideoInstance.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void StopFirstVideo()
@@ -78,9 +79,10 @@ public class VideoManager : NetworkBehaviour
 
     public void PlaySecondVideo()
     {
-        secondVideoInstance = Instantiate(secondVideo, new Vector3(0, 0, 0), Quaternion.identity);
+        secondVideoInstance = Instantiate(secondVideo);
         secondVideoInstance.transform.parent = videoContainer;
-        secondVideoInstance.transform.rotation = Quaternion.Euler(0, videoContainer.rotation.y, 0);
+        secondVideoInstance.transform.localPosition = Vector3.zero;
+        secondVideoInstance.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
     }
 
