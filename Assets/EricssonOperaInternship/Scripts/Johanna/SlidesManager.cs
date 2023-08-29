@@ -26,6 +26,7 @@ public class SlidesManager : NetworkBehaviour
     }
 
     // PlayerRef = IsSharedModeMasterClient
+
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {

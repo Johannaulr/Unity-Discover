@@ -5,66 +5,126 @@ using UnityEngine;
 
 public class VideoManager : NetworkBehaviour
 {
-    public NetworkObject firstVideo;
-    public NetworkObject secondVideo;
+    public GameObject firstVideo;
+    public GameObject secondVideo;
     private Transform videoContainer;
 
-    private bool firstVideoSpawned;
-    private bool secondVideoSpawned;
+    private GameObject firstVideoInstance;
+    private GameObject secondVideoInstance;
+
+    [Networked(OnChanged = nameof(ManageFirstVideo))]
+    public NetworkBool spawnFirstVideoNW { get; set; }
+
+    [Networked(OnChanged = nameof(ManageSecondVideo))]
+    public NetworkBool spawnSecondVideoNW { get; set; }
 
     private void Start()
     {
         videoContainer = GameObject.Find("Video Container").transform;
-        firstVideoSpawned = false;
-        secondVideoSpawned = false;
+
+        spawnFirstVideoNW = false;
+        spawnSecondVideoNW = false;
+        Debug.Log(spawnFirstVideoNW);
+        Debug.Log(spawnSecondVideoNW);
+    }
+
+    public void PlayFirstVideoButtonPressed()
+    {
+        if (!spawnFirstVideoNW)
+        {
+            spawnFirstVideoNW = true;
+            Debug.Log(spawnFirstVideoNW);
+        }
+    }
+
+    public void PlaySecondVideoButtonPressed()
+    {
+        if (!spawnSecondVideoNW)
+        {
+            spawnSecondVideoNW = true;
+            Debug.Log(spawnSecondVideoNW);
+        }
+    }
+
+    public void StopFirstVideoButtonPressed()
+    {
+        if (spawnFirstVideoNW)
+        {
+            spawnFirstVideoNW = false;
+            Debug.Log(spawnFirstVideoNW);
+        }
+    }
+
+    public void StopSecondVideoButtonPressed()
+    {
+        if (spawnSecondVideoNW)
+        {
+            spawnSecondVideoNW = false;
+            Debug.Log(spawnSecondVideoNW);
+        }
     }
 
     public void PlayFirstVideo()
     {
-        if (!firstVideoSpawned)
-        {
-            Runner.Spawn(firstVideo);
-            firstVideo.transform.SetParent(videoContainer);
-            firstVideoSpawned = true;
-            Debug.Log("FirstVideoSpawned: " + firstVideoSpawned);
-        }
+        firstVideoInstance = Instantiate(firstVideo, new Vector3(0, 0, 0), Quaternion.identity);
+        firstVideoInstance.transform.parent = videoContainer;
+        firstVideoInstance.transform.rotation = Quaternion.Euler(0, videoContainer.rotation.y, 0);
     }
 
     public void StopFirstVideo()
     {
-        if (firstVideoSpawned)
-        {
-            Runner.Despawn(firstVideo);
-            //Destroy(GameObject.Find("Video Canvas 1"));
-            Debug.Log("Despawning firstVideo");
-            firstVideoSpawned = false;
-            Debug.Log("FirstVideoSpawned: " + firstVideoSpawned);
-        }
-
+        Destroy(firstVideoInstance);
     }
 
     public void PlaySecondVideo()
     {
-        if (!secondVideoSpawned)
-        {
-            Runner.Spawn(secondVideo);
-            secondVideo.transform.SetParent(videoContainer);
-            secondVideoSpawned = true;
-            Debug.Log("SecondVideoSpawned: " + secondVideoSpawned);
-        }
+        secondVideoInstance = Instantiate(secondVideo, new Vector3(0, 0, 0), Quaternion.identity);
+        secondVideoInstance.transform.parent = videoContainer;
+        secondVideoInstance.transform.rotation = Quaternion.Euler(0, videoContainer.rotation.y, 0);
+
     }
 
     public void StopSecondVideo()
     {
-        if (secondVideo)
+        Destroy(secondVideoInstance);
+    }
+
+
+    public static void ManageFirstVideo(Changed<VideoManager> changeVariable)
+    {
+
+        Debug.Log("NWBool1 was changed");
+
+        if (changeVariable.Behaviour.spawnFirstVideoNW)
         {
-            Runner.Despawn(secondVideo);
-            //Destroy(GameObject.Find("Video Canvas 2"));
-            Debug.Log("Despawning secondVideo");
-            secondVideoSpawned = false;
-            Debug.Log("SecondVideoSpawned: " + secondVideoSpawned);
+            Debug.Log("Playing First Video");
+            changeVariable.Behaviour.PlayFirstVideo();
         }
 
+        else
+        {
+            Debug.Log("Stopping First Video");
+            changeVariable.Behaviour.StopFirstVideo();
+        }
+    }
+
+    public static void ManageSecondVideo(Changed<VideoManager> changeVariable)
+    {
+
+        Debug.Log("NWBool2 was changed");
+
+
+        if (changeVariable.Behaviour.spawnSecondVideoNW)
+        {
+            Debug.Log("Playing Second Video");
+            changeVariable.Behaviour.PlaySecondVideo();
+        }
+
+        else
+        {
+            Debug.Log("Stopping Second Video");
+            changeVariable.Behaviour.StopSecondVideo();
+        }
     }
 
 }
