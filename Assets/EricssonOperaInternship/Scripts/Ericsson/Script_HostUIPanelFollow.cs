@@ -23,13 +23,11 @@ public class Script_HostUIPanelFollow : MonoBehaviour
     {
         step = 8.0f * Time.deltaTime;
 
-        targetPosition = CameraObject.transform.position + new Vector3(-1f, -1f, 0f);
+        targetPosition = CameraObject.transform.position + new Vector3(-0.3f, -0.5f, 0.2f);
         targetRotation = Quaternion.LookRotation(HostUIPanel.transform.position - CameraObject.transform.position);
 
         HostUIPanel.transform.position = Vector3.Lerp(HostUIPanel.transform.position, targetPosition, step);
         HostUIPanel.transform.rotation = Quaternion.Slerp(HostUIPanel.transform.rotation, targetRotation, step);
-
-        //HostUIPanel.transform.rotation = Quaternion.LookRotation(HostUIPanel.transform.position - CameraObject.transform.position);
     }
 
 
