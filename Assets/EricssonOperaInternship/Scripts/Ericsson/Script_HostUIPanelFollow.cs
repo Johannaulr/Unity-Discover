@@ -6,7 +6,6 @@ public class Script_HostUIPanelFollow : MonoBehaviour
 {
 
     public GameObject CameraObject;
-    public GameObject HostUIPanel;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
     private float step;
@@ -14,7 +13,7 @@ public class Script_HostUIPanelFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HostUIPanel.transform.position = CameraObject.transform.position + new Vector3(-0.2f, -0.1f, 0.7f);
+        transform.position = CameraObject.transform.position + new Vector3(-0.2f, -0.1f, 0.7f);
         step = 8.0f * Time.deltaTime;
     }
 
@@ -24,10 +23,10 @@ public class Script_HostUIPanelFollow : MonoBehaviour
         step = 8.0f * Time.deltaTime;
 
         targetPosition = CameraObject.transform.position + new Vector3(-0.3f, -0.5f, 0.2f);
-        targetRotation = Quaternion.LookRotation(HostUIPanel.transform.position - CameraObject.transform.position);
+        targetRotation = Quaternion.LookRotation(transform.position - CameraObject.transform.position);
 
-        HostUIPanel.transform.position = Vector3.Lerp(HostUIPanel.transform.position, targetPosition, step);
-        HostUIPanel.transform.rotation = Quaternion.Slerp(HostUIPanel.transform.rotation, targetRotation, step);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, step);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
     }
 
 
