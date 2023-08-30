@@ -13,8 +13,8 @@ public class Script_ZoneController_NW : NetworkBehaviour
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
-    private bool writeOnceDebuggerIn;
-    private bool writeOnceDebuggerOut;
+    public GameObject ProfileMenuObj;
+    public GameObject ViewerPanelObj;
 
     private int prevState;  // 1 for in, 0 for out
     private int currentState;  // 1 for in, 0 for out
@@ -26,15 +26,20 @@ public class Script_ZoneController_NW : NetworkBehaviour
 
     public TMP_Text hudUItext;
 
+    public bool remoteStateAuthFlag;
+
     private void Start()
     {
         VideoBoxSpawnedFlag = false;
         originalPosition = transform.position;
 
-        remoteBall.transform.position = originalPosition + new Vector3(0, -1.5f, 0);
+        remoteBall.transform.position = originalPosition + new Vector3(0, -1.6f, 0);
 
-        writeOnceDebuggerIn = false;
-        writeOnceDebuggerOut = true;
+        ViewerPanelObj.SetActive(false);
+        ProfileMenuObj.SetActive(false);
+
+        ViewerPanelObj.transform.position = sceneCamera.transform.position + new Vector3(0, 0.051f, 0.8f);
+        ProfileMenuObj.transform.position = sceneCamera.transform.position + new Vector3(0, -0.25f, .8f);
 
         prevState = 0;
         currentState = 1;
@@ -43,6 +48,8 @@ public class Script_ZoneController_NW : NetworkBehaviour
         //targetRotation = Quaternion.identity;
 
         scaleChange = new Vector3(-0.01f, -0.01f, -0.01f);
+
+        remoteStateAuthFlag = false;
     }
 
     public override void FixedUpdateNetwork()
@@ -57,11 +64,13 @@ public class Script_ZoneController_NW : NetworkBehaviour
         {
             currentState = 1;
 
-            ForDebuggerFunc(currentState, prevState, "In Zone, Got Remote."); // current 1, prev 0
+            ForDebuggerFunc(currentState, prevState, "In Zone"); // current 1, prev 0
 
             if (OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) > 0.0f)
             {
-                getRC();
+                getRCfunc();
+
+                ForDebuggerFunc(currentState, prevState, "In Zone, Got Remote.");
 
                 if (OVRInput.GetUp(OVRInput.RawButton.X))
                 {
@@ -81,7 +90,7 @@ public class Script_ZoneController_NW : NetworkBehaviour
             {
                 ForDebuggerFunc(currentState, prevState, "In Zone, Released RemoteBall."); // current 0, prev 1
 
-                releaseRC();
+                releaseRCfunc();
             }
         }
         else
@@ -90,40 +99,40 @@ public class Script_ZoneController_NW : NetworkBehaviour
 
             ForDebuggerFunc(currentState, prevState, "Out of Zone, Released RemoteBall."); // current 0, prev 1
 
-            releaseRC();
+            releaseRCfunc();
         }
 
-        hudUItext.text = "X: " + sceneCamera.transform.position.x.ToString("F2") + "  Z: " + sceneCamera.transform.position.z.ToString("F2") +  "    inZoneFlag : " + InZoneFlag;
+        //hudUItext.text = "X: " + sceneCamera.transform.position.x.ToString("F2") + "  Z: " + sceneCamera.transform.position.z.ToString("F2") +  "    inZoneFlag : " + InZoneFlag;
     }
 
-    void getRC()
+    void getRCfunc()
     {
-        // Assign Left controller's position and rotation to Remote Control Object
-        remoteBall.RequestStateAuthority();
         
-        remoteBall.transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + new Vector3(0.03f, 0, 0.08f);
+        remoteBall.RequestStateAuthority();
+
+        // Checking if this Object has the StateAuthority of the RemoteBall Network Object ???
+        if (remoteBall.HasStateAuthority)
+        {
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Lycka Till");
+        }
+        
+        remoteBall.transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + new Vector3(0.02f, 0, 0.14f);
         
         if (remoteBall.transform.localScale.y > 0.02f && remoteBall.transform.localScale.y <= 0.1f)
         {
             remoteBall.transform.localScale -= scaleChange;
         }
 
-        /*
-        writeOnceDebuggerIn = true;
-        writeOnceDebuggerOut = false;
+        ViewerPanelObj.SetActive(true);
+        ProfileMenuObj.SetActive(true);
 
-        if (writeOnceDebuggerIn == true && writeOnceDebuggerOut == false)
-        {
-            MiniPerf_Script_SceneManager.instance.DebugLogMessage("In Zone, Got Remote.");
+        ViewerPanelObj.transform.position = sceneCamera.transform.position + new Vector3(0, 0.051f, 0.8f);
+        ProfileMenuObj.transform.position = sceneCamera.transform.position + new Vector3(0, -0.25f, .8f);
 
-            writeOnceDebuggerIn = false;
-            writeOnceDebuggerOut = false;
-        }
-        */
         //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
     }
 
-    void releaseRC()
+    void releaseRCfunc()
     {
         remoteBall.ReleaseStateAuthority();
         
@@ -134,16 +143,8 @@ public class Script_ZoneController_NW : NetworkBehaviour
             remoteBall.transform.localScale -= scaleChange;
         }
 
-        /*
-        writeOnceDebuggerIn = false;
-        writeOnceDebuggerOut = true;
-
-        if (writeOnceDebuggerOut == true && writeOnceDebuggerIn == false && prevState == 1)
-        {
-            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Out of Zone, Release Remote.");
-            writeOnceDebuggerOut = false;
-        }
-        */
+        ViewerPanelObj.SetActive(false);
+        ProfileMenuObj.SetActive(false);
     }
 
     private void CheckInZoneFunc(GameObject cam)
@@ -174,6 +175,11 @@ public class Script_ZoneController_NW : NetworkBehaviour
         {
             MiniPerf_Script_SceneManager.instance.DebugLogMessage(msg);
         }
+    }
+
+    private void ShowViewerPanel()
+    {
+
     }
 }
 

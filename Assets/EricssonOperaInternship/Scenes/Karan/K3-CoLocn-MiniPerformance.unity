@@ -196,8 +196,11 @@ MonoBehaviour:
   _interpolationDataSource: 0
   sceneCamera: {fileID: 1375892137}
   remoteBall: {fileID: 398222660}
+  ProfileMenuObj: {fileID: 2050014309}
+  ViewerPanelObj: {fileID: 1631666791}
   InZoneFlag: 0
   hudUItext: {fileID: 1670069999}
+  remoteStateAuthFlag: 0
 --- !u!1 &83064685
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,7 +3718,7 @@ Transform:
   m_GameObject: {fileID: 1119428042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 220, y: 290, z: 1}
+  m_LocalScale: {x: 180, y: 105, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2050014316}
@@ -5678,7 +5681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1631666792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7460,7 +7463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2050014310
 MonoBehaviour:
   m_ObjectHideFlags: 0
