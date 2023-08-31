@@ -46,7 +46,8 @@ public class Script_ZoneController_NW : NetworkBehaviour
     {
         sceneCamera = GameObject.Find("CenterEyeAnchor");
         ZoneBlockObj = GameObject.Find("Zone-Object");
-        remoteBall = Runner.FindObject(GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>().Id);
+        //remoteBall = Runner.FindObject(GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>().NetworkGuid);
+        //remoteBall = Runner.FindObject(GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>().Id);
         hudUItext = GameObject.Find("HUD_Text_Object").GetComponent<TextMeshProUGUI>();
     }
 

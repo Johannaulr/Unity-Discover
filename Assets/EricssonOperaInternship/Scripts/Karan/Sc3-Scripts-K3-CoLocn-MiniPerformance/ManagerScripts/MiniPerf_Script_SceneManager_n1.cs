@@ -6,24 +6,24 @@ using UnityEngine;
 using Discover.Colocation.Test;
 
 [Serializable]
-public enum MiniPerfRPCtypes_n1
+public enum myRPCs
 {
     PlayAudio,
     StopAudio,
     DarkPassThru,
     NormalPassThru,
-    StartTorus
+    StartSomething
 }
 
 
-public class MiniPerf_Script_SceneManager : MonoBehaviour
+public class MiniPerf_Script_SceneManager_n1 : MonoBehaviour
 {
     //this line makes it Singleton
-    public static MiniPerf_Script_SceneManager instance;
+    public static MiniPerf_Script_SceneManager_n1 instance;
 
 
     public string networkSessionName = "XRminiPerformance";
-    public MiniPerf_Script_NetworkManager mainNetworkManager;
+    public MiniPerf_Script_NetworkManager_n1 mainNetworkManager;
     public MiniPerf_Script_AudioRPCManager audioRpcController;
     public MiniPerf_Script_PassThruRPCManager PassThruRPCController;
 
@@ -56,11 +56,11 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
         }
     }
 
-    public void SendRPC(MiniPerfRPCtypes_n1 rpcType)
+    public void SendRPC(myRPCs rpcType)
     {
         switch (rpcType)
         {
-            case MiniPerfRPCtypes_n1.PlayAudio:
+            case myRPCs.PlayAudio:
                 if (isHostInFusionServer)
                 {
                     audioRpcController.RPC_PlayAudioClip();
@@ -68,7 +68,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.StopAudio:
+            case myRPCs.StopAudio:
                 if (isHostInFusionServer)
                 {
                     audioRpcController.RPC_StopAudioClip();
@@ -76,7 +76,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.DarkPassThru:
+            case myRPCs.DarkPassThru:
                 if (isHostInFusionServer)
                 {
                     PassThruRPCController.RPC_PassThruDark();
@@ -84,7 +84,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.NormalPassThru:
+            case myRPCs.NormalPassThru:
                 if (isHostInFusionServer)
                 {
                     PassThruRPCController.RPC_PassThruNormal();
@@ -92,7 +92,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
 
-            case MiniPerfRPCtypes_n1.StartTorus:
+            case myRPCs.StartSomething:
                 if (isHostInFusionServer)
                 {
                     

@@ -5,32 +5,28 @@ using Fusion;
 using Fusion.Sockets;
 using System;
 
-public class Script_ZoneControlleNW_Spawner : MonoBehaviour, INetworkRunnerCallbacks
+public class Script_ZoneControlleNW_Spawner : NetworkBehaviour
 {
 
     public NetworkRunner nwRun;
     public NetworkObject ZoneControllerPrefab;
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    private bool spawnedOnce;
+
+    void Start()
     {
-        nwRun.Spawn(ZoneControllerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        spawnedOnce = false;
     }
 
-    public void OnConnectedToServer(NetworkRunner runner) { }
-    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
-    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
-    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }
-    public void OnDisconnectedFromServer(NetworkRunner runner) { }
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
-    public void OnInput(NetworkRunner runner, NetworkInput input) { }
-    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
-    
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
-    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data) { }
-    public void OnSceneLoadDone(NetworkRunner runner) { }
-    public void OnSceneLoadStart(NetworkRunner runner) { }
-    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList) { }
-    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
-    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) { }
+    public override void FixedUpdateNetwork()
+    {
+        base.FixedUpdateNetwork();
 
+        if (nwRun.GetPlayerUserId() != null && spawnedOnce == false)
+        {
+            nwRun.Spawn(ZoneControllerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Zone Controller Spawned");
+            spawnedOnce = true;
+        }
+    }
 }

@@ -1220,6 +1220,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 398222659}
+  - {fileID: 398222662}
   SimulationBehaviours: []
 --- !u!114 &398222662
 MonoBehaviour:
@@ -1233,6 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa391dec327f834c9c984a2f57043ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   nwRun: {fileID: 582342217}
   ZoneControllerPrefab: {fileID: 6760454265988331626, guid: fa1cfc3fe15c6d344a45a73b45d188f2, type: 3}
 --- !u!1 &398399588
@@ -3621,7 +3623,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191919985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b36f9b28f2bd3b04a9de478a7520a223, type: 3}
+  m_Script: {fileID: 11500000, guid: f5223aa53acbda6438a3545aa28fa04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_networkRunner: {fileID: 582342217}
@@ -3643,7 +3645,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191919985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903dc1c58b8613443bf729f3732a7dfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a2cf070dd859cc4688e78453f20519c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   networkSessionName: XRminiPerformance
