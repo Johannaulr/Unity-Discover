@@ -18,6 +18,13 @@ public class PendulumScript : MonoBehaviour
 	
 	private float cutoffValue;
 	
+	
+	public void updateCutoffValue(float newValue)
+	{
+		targetCutoffValue = newValue;
+	}
+	
+	
 	private void Start()
 	{
 		float cutOff = dissolveSphere.gameObject.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
@@ -27,7 +34,7 @@ public class PendulumScript : MonoBehaviour
 	    //animatePingPong();
 	    animatePortal();
 		
-	    this.gameObject.transform.position = hmdTransform.position;
+	    //this.gameObject.transform.position = hmdTransform.position;
 	    
     }
     
@@ -36,13 +43,22 @@ public class PendulumScript : MonoBehaviour
 		
 		float currentCutoffValue = dissolveSphere.gameObject.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
 		
-		if(targetCutoffValue >= currentCutoffValue)
+		if(currentCutoffValue <= -.55 || currentCutoffValue >= .55)
+		{
+			this.gameObject.transform.position = hmdTransform.position;
+			this.gameObject.transform.eulerAngles = new Vector3(-90f + hmdTransform.eulerAngles.x,hmdTransform.eulerAngles.y,hmdTransform.eulerAngles.z);
+			
+			
+		}
+		
+		if(Mathf.Abs(targetCutoffValue) - Mathf.Abs(currentCutoffValue) > 0.5f)
 		{
 			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, targetCutoffValue, animationSpeed/100));
+				
 		} 
 		else 
 		{
-			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, targetCutoffValue, animationSpeed/100));
+			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, targetCutoffValue, animationSpeed/50));
 		}
 	}   
     
