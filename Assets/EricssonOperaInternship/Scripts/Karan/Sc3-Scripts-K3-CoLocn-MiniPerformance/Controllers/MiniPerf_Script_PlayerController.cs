@@ -54,7 +54,7 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
         if (OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) > 0)
         {
-            profileUIVisibleFlag = true;
+            //profileUIVisibleFlag = true;
             //ProfileMenuObject.SetActive(profileUIVisibleFlag);
             //ExperimentDescriptionObject.SetActive(profileUIVisibleFlag);
             //ProfileMenuObject.transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + new Vector3(0.2f, 0, 0.15f);
@@ -64,7 +64,7 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
         }
         else if(OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) == 0)
         {
-            profileUIVisibleFlag = false;
+            //profileUIVisibleFlag = false;
             //ProfileMenuObject.SetActive(profileUIVisibleFlag);
             //ExperimentDescriptionObject.SetActive(profileUIVisibleFlag);
         }
