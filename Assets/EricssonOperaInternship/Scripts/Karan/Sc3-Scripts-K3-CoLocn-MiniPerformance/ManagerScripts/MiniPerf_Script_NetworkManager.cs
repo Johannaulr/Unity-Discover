@@ -20,6 +20,10 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
     public UnityEvent<string> OnNetworkEvent;
 
     public GameObject JoiningUIPanel;
+    public GameObject HostUIPanel;
+    public GameObject SlidesPanel;
+    public GameObject SlidesBall;
+
 
     //public GameObject CubeContainerObject;
     //public GameObject CubNWprefab;
@@ -72,10 +76,13 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
 
         JoiningUIPanel.SetActive(false);
 
-        //var cubeTest = m_networkRunner.Spawn(CubNWprefab, new Vector3(0,0,0), Quaternion.identity);
-        //cubeTest.transform.SetParent(CubeContainerObject.transform);
-        //CubeContainerObject.SetActive(false);
-        
+        if (m_networkRunner.IsSharedModeMasterClient)
+        {
+            HostUIPanel.SetActive(true);
+        }
+        SlidesPanel.SetActive(true);
+        SlidesBall.SetActive(true);
+
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

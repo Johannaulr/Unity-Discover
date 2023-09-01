@@ -5,11 +5,12 @@ using Fusion;
 
 public class MiniPerf_Script_PassThruRPCManager : NetworkBehaviour
 {
-    public OVRPassthroughLayer PassThruComponent;
+    public GameObject ovrCameraRig;
+    private OVRPassthroughLayer PassThruComponent;
 
     private void Awake()
     {
-        PassThruComponent = Object.GetComponent<OVRPassthroughLayer>();
+        PassThruComponent = ovrCameraRig.GetComponent<OVRPassthroughLayer>();
     }
 
     //private bool musicStarted = false;

@@ -22,10 +22,10 @@ public class VideoManager : NetworkBehaviour
     {
         videoContainer = GameObject.Find("Video Container").transform;
 
-        spawnFirstVideoNW = false;
-        spawnSecondVideoNW = false;
-        Debug.Log(spawnFirstVideoNW);
-        Debug.Log(spawnSecondVideoNW);
+        //spawnFirstVideoNW = false;
+        //spawnSecondVideoNW = false;
+        //Debug.Log(spawnFirstVideoNW);
+        //Debug.Log(spawnSecondVideoNW);
     }
 
     public void PlayFirstVideoButtonPressed()
