@@ -3,38 +3,57 @@ using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 
-public class ExperienceManager : NetworkBehaviour
+public class PortalManager : NetworkBehaviour
 {
     public GameObject portal;
-    private bool showPortal;
 
-    private float dissolveValueLocal;
+    [Networked]
+    private bool showPortal { get; set; }
 
-    [Networked(OnChanged = nameof(ManagePortal))]
-    private float dissolveValueNetworked { get; set; }
+    private float targetCutoffValuePortal;
+    [SerializeField, Tooltip("The speed at which the variable X pendulums between 0 and 1."), Range(0f, 1f)]
+    private float animationSpeedPortal = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        dissolveValueNetworked = 0f;
-        dissolveValueLocal = 0f;
     }
 
     public override void FixedUpdateNetwork()
     {
 
+        float currentCutoffValuePortal = portal.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
 
-        dissolveValueLocal = Mathf.PingPong(Time.time, 1);
+        //dissolveValueLocal = Mathf.PingPong(Time.time, 1);
         //Debug.Log("dissolveValueLocal is " + dissolveValueLocal);
 
-        if (showPortal)
+        if (showPortal && currentCutoffValuePortal < targetCutoffValuePortal)
         {
-            //activate dissolve shader using dissolveValueNetworked
+            AnimatePortal(currentCutoffValuePortal);
+        }
+
+        if (!showPortal && currentCutoffValuePortal > targetCutoffValuePortal)
+        {
+            AnimatePortal(currentCutoffValuePortal);
         }
 
         else
         {
-            //deactivate dissolve shader using dissolveValueNetworked
+            return;
+        }
+    }
+
+    private void AnimatePortal(float currentCutoffValuePortal)
+    {
+
+        if (Mathf.Abs(targetCutoffValuePortal) - Mathf.Abs(currentCutoffValuePortal) > 0.5f)
+        {
+            portal.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height", Mathf.Lerp(currentCutoffValuePortal, targetCutoffValuePortal, animationSpeedPortal / 100));
+
+        }
+        else
+        {
+            portal.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height", Mathf.Lerp(currentCutoffValuePortal, targetCutoffValuePortal, animationSpeedPortal / 50));
         }
     }
 
@@ -42,6 +61,7 @@ public class ExperienceManager : NetworkBehaviour
     {
         if (!showPortal)
         {
+            targetCutoffValuePortal = 1;
             showPortal = true;
         }
     }
@@ -50,27 +70,8 @@ public class ExperienceManager : NetworkBehaviour
     {
         if (showPortal)
         {
+            targetCutoffValuePortal = -1;
             showPortal = false;
         }
-    }
-
-    private void PortalShader()
-    {
-
-        if (showPortal)
-        {
-            //activate dissolve shader using dissolveValueLocal
-        }
-
-        else
-        {
-            //deactivate dissolve shader using dissolveValueLocal
-        }
-    }
-
-    public static void ManagePortal(Changed<ExperienceManager> changeVariable)
-    {
-        changeVariable.Behaviour.dissolveValueLocal = changeVariable.Behaviour.dissolveValueNetworked;
-        changeVariable.Behaviour.PortalShader();
     }
 }
