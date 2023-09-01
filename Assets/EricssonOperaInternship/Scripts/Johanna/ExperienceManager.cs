@@ -25,7 +25,7 @@ public class ExperienceManager : NetworkBehaviour
 
 
         dissolveValueLocal = Mathf.PingPong(Time.time, 1);
-        Debug.Log("dissolveValueLocal is " + dissolveValueLocal);
+        //Debug.Log("dissolveValueLocal is " + dissolveValueLocal);
 
         if (showPortal)
         {

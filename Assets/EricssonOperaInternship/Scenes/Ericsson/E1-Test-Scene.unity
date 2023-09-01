@@ -1456,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2088,7 +2088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a60b246fc964bd428aa863631f10984, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4ae6a8f26547fd4fbb09877f036ef11, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2729,7 +2729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2810,10 +2810,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   slidesCollection:
-  - {fileID: 21300000, guid: 9a60b246fc964bd428aa863631f10984, type: 3}
-  - {fileID: 21300000, guid: dc1d80c4dc49a464197b9da5c53e6103, type: 3}
-  - {fileID: 21300000, guid: 155daba7b2834cc47bf62638b1341c5f, type: 3}
-  - {fileID: 21300000, guid: 7b270f08fcc1a544da39f33da67a2496, type: 3}
+  - {fileID: 21300000, guid: c4ae6a8f26547fd4fbb09877f036ef11, type: 3}
+  - {fileID: 21300000, guid: 680d8b941e6eeeb4289c2a54c483eab5, type: 3}
+  - {fileID: 21300000, guid: 70468d079025eb8468f0a6d65f4cc024, type: 3}
+  - {fileID: 21300000, guid: de83d2d84c8acb7429bf753932663b6a, type: 3}
+  - {fileID: 21300000, guid: dcd21381d490ce34d9888e50d23ce914, type: 3}
+  - {fileID: 21300000, guid: 057134b26186c124185dc8a3e2f78962, type: 3}
+  - {fileID: 21300000, guid: d6b88d21219890b4bac584306fb7f645, type: 3}
+  - {fileID: 21300000, guid: a8455808c875e844696014dc946d922e, type: 3}
+  - {fileID: 21300000, guid: 0d8a6393b82b93c48815d2dd828cdd84, type: 3}
+  - {fileID: 21300000, guid: c999417c905780e4e82b3b6d25fe5c37, type: 3}
   activeSlide: {fileID: 191354826}
   activeSlideIndexPublic: 0
   _networkedActiveSlideIndex: 0
@@ -6165,8 +6171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  firstVideo: {fileID: 6912120508878440667, guid: df78928cb56e0b54c907499328e8c873, type: 3}
-  secondVideo: {fileID: 2766099588263554381, guid: 06afbd9c8acff644f98bf51598b2087d, type: 3}
+  firstVideo: {fileID: 61374886023546971, guid: df78928cb56e0b54c907499328e8c873, type: 3}
+  secondVideo: {fileID: 4975688740890034453, guid: 06afbd9c8acff644f98bf51598b2087d, type: 3}
   _spawnFirstVideoNW:
     _value: 0
   _spawnSecondVideoNW:
@@ -7693,7 +7699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -9275,7 +9281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &989905335
 Transform:
   m_ObjectHideFlags: 0
@@ -16210,7 +16216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.35, y: 1.5}
+  m_AnchoredPosition: {x: -3.644, y: 1.5}
   m_SizeDelta: {x: 319.7407, y: 195.243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772832009
@@ -17785,7 +17791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 7465974197010688940, guid: 951f254cc46a9ed448829109a5d1af46, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -18528,7 +18534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970601270}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.35, y: 0.76199996, z: 0.13}
+  m_LocalPosition: {x: -3.644, y: 0.76199996, z: 0.13}
   m_LocalScale: {x: 0.050000004, y: 0.049999997, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children:
