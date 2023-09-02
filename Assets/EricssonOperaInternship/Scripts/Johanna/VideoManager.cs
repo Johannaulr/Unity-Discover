@@ -9,6 +9,8 @@ public class VideoManager : NetworkBehaviour
     public GameObject secondVideo;
     private Transform videoContainer;
 
+    public SlidesManager slidesManager;
+
     private GameObject firstVideoInstance;
     private GameObject secondVideoInstance;
 
@@ -30,7 +32,7 @@ public class VideoManager : NetworkBehaviour
 
     public void PlayFirstVideoButtonPressed()
     {
-        if (!spawnFirstVideoNW)
+        if (!spawnFirstVideoNW && slidesManager.slidesActive)
         {
             spawnFirstVideoNW = true;
             Debug.Log(spawnFirstVideoNW);
@@ -39,7 +41,7 @@ public class VideoManager : NetworkBehaviour
 
     public void PlaySecondVideoButtonPressed()
     {
-        if (!spawnSecondVideoNW)
+        if (!spawnSecondVideoNW && slidesManager.slidesActive)
         {
             spawnSecondVideoNW = true;
             Debug.Log(spawnSecondVideoNW);
@@ -95,8 +97,6 @@ public class VideoManager : NetworkBehaviour
     public static void ManageFirstVideo(Changed<VideoManager> changeVariable)
     {
 
-        Debug.Log("NWBool1 was changed");
-
         if (changeVariable.Behaviour.spawnFirstVideoNW)
         {
             Debug.Log("Playing First Video");
@@ -112,9 +112,6 @@ public class VideoManager : NetworkBehaviour
 
     public static void ManageSecondVideo(Changed<VideoManager> changeVariable)
     {
-
-        Debug.Log("NWBool2 was changed");
-
 
         if (changeVariable.Behaviour.spawnSecondVideoNW)
         {

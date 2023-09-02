@@ -12,6 +12,7 @@ TagManager:
   - Bike_Pedal_R
   - Grabbable
   - Sph
+  - Grab Ball
   layers:
   - Default
   - TransparentFX

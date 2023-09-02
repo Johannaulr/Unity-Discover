@@ -6,12 +6,14 @@ public class EnablePassthrough : MonoBehaviour
 {
     public PortalAudioManager audioManager;
 
+    public EnableVREnvironment enableVREnvironment;
+
     public int defaultLayerIndex;
     public int insidePortalLayerIndex;
     public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
-    public GameObject[] insidePortalGameObjects;
+    public List<GameObject> insidePortalGameObjects = new List<GameObject>();
     //public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +38,13 @@ public class EnablePassthrough : MonoBehaviour
 
                 audioManager.StopAmbientLoop();
             }
+        }
+
+        if (other.CompareTag(grabbableTag))
+        {
+            SetLayerRecursively(other.gameObject, defaultLayerIndex);
+            insidePortalGameObjects.Remove(other.gameObject);
+            enableVREnvironment.insidePortalGameObjects.Remove(other.gameObject);
         }
     }
 
