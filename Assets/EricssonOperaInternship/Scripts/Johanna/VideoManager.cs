@@ -97,8 +97,6 @@ public class VideoManager : NetworkBehaviour
     public static void ManageFirstVideo(Changed<VideoManager> changeVariable)
     {
 
-        Debug.Log("NWBool1 was changed");
-
         if (changeVariable.Behaviour.spawnFirstVideoNW)
         {
             Debug.Log("Playing First Video");
@@ -114,9 +112,6 @@ public class VideoManager : NetworkBehaviour
 
     public static void ManageSecondVideo(Changed<VideoManager> changeVariable)
     {
-
-        Debug.Log("NWBool2 was changed");
-
 
         if (changeVariable.Behaviour.spawnSecondVideoNW)
         {

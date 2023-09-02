@@ -5,13 +5,10 @@ using Fusion;
 
 public class GrabBallManager : NetworkBehaviour
 {
-    [Networked(OnChanged = nameof(ManageGrabBalls))]
-    private bool grabBallsActive { get; set; }
     private List<GameObject> grabBalls = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        grabBallsActive = false;
         foreach (var grabBall in GameObject.FindGameObjectsWithTag("Grab Ball"))
         {
             grabBalls.Add(grabBall);
@@ -30,14 +27,6 @@ public class GrabBallManager : NetworkBehaviour
 
     public void ShowGrabBallsButtonPressed()
     {
-        if (!grabBallsActive)
-        {
-            grabBallsActive = true;
-        }
-    }
-    
-    public void ShowGrabBalls()
-    {
         foreach (var grabBall in grabBalls)
         {
             foreach (Transform child in grabBall.transform)
@@ -52,14 +41,6 @@ public class GrabBallManager : NetworkBehaviour
 
     public void HideGrabBallsButtonPressed()
     {
-        if (grabBallsActive)
-        {
-            grabBallsActive = false;
-        }
-    }
-
-    public void HideGrabBalls()
-    {
         foreach (var grabBall in grabBalls)
         {
             foreach (Transform child in grabBall.transform)
@@ -69,20 +50,6 @@ public class GrabBallManager : NetworkBehaviour
                     child.gameObject.SetActive(false);
                 }
             }
-        }
-    }
-
-
-    public static void ManageGrabBalls(Changed<GrabBallManager> changed)
-    {
-        if (changed.Behaviour.grabBallsActive)
-        {
-            changed.Behaviour.ShowGrabBalls();
-        }
-
-        else
-        {
-            changed.Behaviour.HideGrabBalls();
         }
     }
 }

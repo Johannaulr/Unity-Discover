@@ -21,26 +21,28 @@ public class PortalManager : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        if (Runner.IsConnectedToServer) {
+            float currentCutoffValuePortal = portal.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
 
-        float currentCutoffValuePortal = portal.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
+            //dissolveValueLocal = Mathf.PingPong(Time.time, 1);
+            //Debug.Log("dissolveValueLocal is " + dissolveValueLocal);
 
-        //dissolveValueLocal = Mathf.PingPong(Time.time, 1);
-        //Debug.Log("dissolveValueLocal is " + dissolveValueLocal);
+            if (showPortal && currentCutoffValuePortal < targetCutoffValuePortal)
+            {
+                AnimatePortal(currentCutoffValuePortal);
+            }
 
-        if (showPortal && currentCutoffValuePortal < targetCutoffValuePortal)
-        {
-            AnimatePortal(currentCutoffValuePortal);
+            if (!showPortal && currentCutoffValuePortal > targetCutoffValuePortal)
+            {
+                AnimatePortal(currentCutoffValuePortal);
+            }
+
+            else
+            {
+                return;
+            }
         }
 
-        if (!showPortal && currentCutoffValuePortal > targetCutoffValuePortal)
-        {
-            AnimatePortal(currentCutoffValuePortal);
-        }
-
-        else
-        {
-            return;
-        }
     }
 
     private void AnimatePortal(float currentCutoffValuePortal)

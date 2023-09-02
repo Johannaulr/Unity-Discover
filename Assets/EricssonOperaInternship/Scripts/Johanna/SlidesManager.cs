@@ -27,7 +27,6 @@ public class SlidesManager : NetworkBehaviour
     {
         slideImage = activeSlide.GetComponent<Image>();
         slideImage.enabled = false;
-        slidesActive = false;
         //networkedActiveSlideIndex = 0;
         activeSlideIndexPrivate = 0;
         activeSlideIndexPublic = 0;
