@@ -30,11 +30,11 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
             if (audioPlayFlag)
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes_n1.PlayAudio);
+                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.PlayAudio);
             }
             else
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes_n1.StopAudio);
+                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.StopAudio);
             }
         }
 
@@ -44,11 +44,11 @@ public class MiniPerf_Script_PlayerController : MonoBehaviour
 
             if (passThruDarkFlag)
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes_n1.DarkPassThru);
+                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.DarkPassThru);
             }
             else
             {
-                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes_n1.NormalPassThru);
+                MiniPerf_Script_SceneManager.instance.SendRPC(MiniPerfRPCtypes.NormalPassThru);
             }
         }
 

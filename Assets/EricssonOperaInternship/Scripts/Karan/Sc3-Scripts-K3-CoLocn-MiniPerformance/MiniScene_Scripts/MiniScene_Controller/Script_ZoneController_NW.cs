@@ -28,7 +28,8 @@ public class Script_ZoneController_NW : NetworkBehaviour
 
     private Vector3 scaleChange;
 
-    public TMP_Text hudUItext;
+    //public TMP_Text hudUItext;
+    public TMP_Text debugNWinputsText;
 
     public bool remoteStateAuthFlag;
 
@@ -42,13 +43,29 @@ public class Script_ZoneController_NW : NetworkBehaviour
     [Networked(OnChanged = nameof(ViewerPanelNWfunc))]
     public int RemoteTakenIntNW { get; set; }
 
+    private int localInt;
+
+    [Networked(OnChanged = nameof(ChangeLocalIntFunc))]
+    public int IntNW { get; set; }
+
+    private bool localBool;
+
+    [Networked (OnChanged = nameof(ChangeLocalBoolFunc))]
+    public NetworkBool boolNW { get; set; }
+
+
+    [Networked]
+    public float floatNW { get; set; }
+
     private void Awake()
     {
         sceneCamera = GameObject.Find("CenterEyeAnchor");
         ZoneBlockObj = GameObject.Find("Zone-Object");
         //remoteBall = Runner.FindObject(GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>().NetworkGuid);
         //remoteBall = Runner.FindObject(GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>().Id);
-        hudUItext = GameObject.Find("HUD_Text_Object").GetComponent<TextMeshProUGUI>();
+        remoteBall = GameObject.Find("Remote-Controller-NW").GetComponent<NetworkObject>();
+        //hudUItext = GameObject.Find("HUD_Text_Object").GetComponent<TextMeshProUGUI>();
+        debugNWinputsText = GameObject.Find("DebuggerNWinputs-Object").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -91,41 +108,26 @@ public class Script_ZoneController_NW : NetworkBehaviour
 
             ForDebuggerFunc(currentState, prevState, "In Zone"); // current 1, prev 0
 
-            if (OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) > 0.0f && RemoteTakenInt == 0)
+            if (RemoteTakenInt == 0)
             {
-                getRCfunc();
-
+                //getRCfunc();
                 ForDebuggerFunc(currentState, prevState, "In Zone, Got Remote.");
-
-                if (OVRInput.GetUp(OVRInput.RawButton.X))
-                {
-                    //Debug.Log("Sphere Spawn Please");
-                    //targetPosition = sceneCamera.transform.position;
-                    //targetRotation = sceneCamera.transform.rotation;
-
-                    //Runner.Spawn(VideoBoxPrefab, position: targetPosition, rotation: targetRotation);
-                    //VideoBoxSpawnedFlag = true;
-                }
-
-                //VideoBoxSpawnedFlag = false;
             }
             else
             {
                 ForDebuggerFunc(currentState, prevState, "In Zone, Released RemoteBall."); // current 0, prev 1
-
-                releaseRCfunc();
+                //releaseRCfunc();
             }
         }
         else
         {
             currentState = 0;
-
             ForDebuggerFunc(currentState, prevState, "Out of Zone, Released RemoteBall."); // current 0, prev 1
-
-            releaseRCfunc();
+            //releaseRCfunc();
         }
 
-        hudUItext.text = "Viewer Panel Flag NW : " + ViewerPanelFlag;
+        //hudUItext.text = "NW int: " + localInt + ", NW bool: " + localBool;
+        //hudUItext.text = "Viewer Panel Flag NW : " + ViewerPanelFlag;
         //hudUItext.text = "X: " + sceneCamera.transform.position.x.ToString("F2") + "  Z: " + sceneCamera.transform.position.z.ToString("F2") +  "    inZoneFlag : " + InZoneFlag;
     }
 
@@ -205,7 +207,7 @@ public class Script_ZoneController_NW : NetworkBehaviour
     {
         if (current != past)
         {
-            MiniPerf_Script_SceneManager.instance.DebugLogMessage(msg);
+            MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage(msg);
         }
     }
 
@@ -232,7 +234,17 @@ public class Script_ZoneController_NW : NetworkBehaviour
     private static void RemoteTakenNWfunc(Changed<Script_ZoneController_NW> changedVariable)
     {
         changedVariable.Behaviour.RemoteTakenInt = changedVariable.Behaviour.RemoteTakenIntNW;
+    }
 
+
+    private static void ChangeLocalIntFunc(Changed<Script_ZoneController_NW> changedVariable)
+    {
+        changedVariable.Behaviour.localInt = changedVariable.Behaviour.IntNW;
+    }
+
+    private static void ChangeLocalBoolFunc(Changed<Script_ZoneController_NW> changedVariable)
+    {
+        changedVariable.Behaviour.localBool = changedVariable.Behaviour.boolNW;
     }
 
 }

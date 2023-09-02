@@ -6,7 +6,7 @@ using UnityEngine;
 using Discover.Colocation.Test;
 
 [Serializable]
-public enum MiniPerfRPCtypes_n1
+public enum MiniPerfRPCtypes
 {
     PlayAudio,
     StopAudio,
@@ -56,11 +56,11 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
         }
     }
 
-    public void SendRPC(MiniPerfRPCtypes_n1 rpcType)
+    public void SendRPC(MiniPerfRPCtypes rpcType)
     {
         switch (rpcType)
         {
-            case MiniPerfRPCtypes_n1.PlayAudio:
+            case MiniPerfRPCtypes.PlayAudio:
                 if (isHostInFusionServer)
                 {
                     audioRpcController.RPC_PlayAudioClip();
@@ -68,7 +68,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.StopAudio:
+            case MiniPerfRPCtypes.StopAudio:
                 if (isHostInFusionServer)
                 {
                     audioRpcController.RPC_StopAudioClip();
@@ -76,7 +76,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.DarkPassThru:
+            case MiniPerfRPCtypes.DarkPassThru:
                 if (isHostInFusionServer)
                 {
                     PassThruRPCController.RPC_PassThruDark();
@@ -84,7 +84,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
             
-            case MiniPerfRPCtypes_n1.NormalPassThru:
+            case MiniPerfRPCtypes.NormalPassThru:
                 if (isHostInFusionServer)
                 {
                     PassThruRPCController.RPC_PassThruNormal();
@@ -92,7 +92,7 @@ public class MiniPerf_Script_SceneManager : MonoBehaviour
                 }
                 break;
 
-            case MiniPerfRPCtypes_n1.StartTorus:
+            case MiniPerfRPCtypes.StartTorus:
                 if (isHostInFusionServer)
                 {
                     

@@ -5,7 +5,7 @@ using Fusion;
 using Fusion.Sockets;
 using System;
 
-public class Script_ZoneControlleNW_Spawner : NetworkBehaviour
+public class Script_ZoneControllerNW_Spawner : NetworkBehaviour
 {
 
     public NetworkRunner nwRun;
@@ -24,8 +24,8 @@ public class Script_ZoneControlleNW_Spawner : NetworkBehaviour
 
         if (nwRun.GetPlayerUserId() != null && spawnedOnce == false)
         {
-            nwRun.Spawn(ZoneControllerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            MiniPerf_Script_SceneManager.instance.DebugLogMessage("Zone Controller Spawned");
+            nwRun.Spawn(ZoneControllerPrefab, Vector3.zero, Quaternion.identity);
+            MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("Zone Controller Spawned... YAAAAY");
             spawnedOnce = true;
         }
     }
