@@ -4210,15 +4210,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MiniPerf_Script_AudioRPCManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2033996050}
+        m_TargetAssemblyTypeName: DissolveController, Assembly-CSharp
+        m_MethodName: updateCutoffValue
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -6937,7 +6937,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   firstVideo: {fileID: 7848307875395760218, guid: df78928cb56e0b54c907499328e8c873, type: 3}
   secondVideo: {fileID: 2376417641234254030, guid: 06afbd9c8acff644f98bf51598b2087d, type: 3}
-  slidesManager: {fileID: 266222112}
+  slidesManager: {fileID: 0}
   _spawnFirstVideoNW:
     _value: 0
   _spawnSecondVideoNW:
@@ -12019,7 +12019,7 @@ Transform:
   m_GameObject: {fileID: 1286763782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 54.9, z: 0}
-  m_LocalScale: {x: 1792.9111, y: 1792.9111, z: 1792.9111}
+  m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 805532011}
@@ -13449,15 +13449,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MiniPerf_Script_AudioRPCManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2033996050}
+        m_TargetAssemblyTypeName: DissolveController, Assembly-CSharp
+        m_MethodName: updateCutoffValue
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: -1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -13766,13 +13766,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413778598}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39494dbf06e46bf48a1ddc8c9904c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedObject: {fileID: 1171175869}
-  offset: {x: 0, y: -1, z: 0}
+  attachedObject: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
   x: 0
   y: 0
   z: 0
@@ -14659,7 +14659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 1012759083}
-  enableVREnvironment: {fileID: 313575576}
+  enableVREnvironment: {fileID: 0}
   defaultLayerIndex: 0
   insidePortalLayerIndex: 6
   outsidePortalLayerIndex: 8
@@ -15721,10 +15721,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MiniPerf_Script_AudioRPCManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2033996050}
+        m_TargetAssemblyTypeName: DissolveController, Assembly-CSharp
+        m_MethodName: updateCutoffValue
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19379,6 +19379,11 @@ MonoBehaviour:
     - {x: 0.07268512, y: 0.020210747, z: -0.6646412, w: 0.7433442}
     - {x: -0.086037695, y: 0.0073546483, z: -0.6430303, w: 0.76095694}
     - {x: 0.0023430234, y: -0.042328585, z: -0.49613467, w: 0.8672101}
+--- !u!4 &1930001209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9106409042390426758, guid: 1dfe1817bca2ef64eae52a5061bb681b, type: 3}
+  m_PrefabInstance: {fileID: 1375892136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1933312643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19921,13 +19926,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970601270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39494dbf06e46bf48a1ddc8c9904c994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedObject: {fileID: 1772832007}
-  offset: {x: 0, y: 1, z: 0}
+  attachedObject: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
   x: 0
   y: 0
   z: 0
@@ -20542,6 +20547,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2149771049450210370, guid: 595f5eca079c9334e9c248680a3348cb, type: 3}
   m_PrefabInstance: {fileID: 2021661872}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2033996049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1889688182785566822, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_Name
+      value: SphereDissolvePortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635353293421813356, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: Flags
+      value: 2561
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635353293421813356, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: -4950733370367846589
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635353293421813356, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: 5854719617444230834
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637870971374962014, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669438824370951960, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+      propertyPath: hmdTransform
+      value: 
+      objectReference: {fileID: 1930001209}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+--- !u!114 &2033996050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7669438824370951960, guid: 603a645b16fb098489cbd90eefa95efd, type: 3}
+  m_PrefabInstance: {fileID: 2033996049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36140defd56a0fa449e4aab3d3c2a0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037188989
 GameObject:
   m_ObjectHideFlags: 0
