@@ -37,6 +37,11 @@ public class EnablePassthrough : MonoBehaviour
                 audioManager.StopAmbientLoop();
             }
         }
+
+        if (other.CompareTag(grabbableTag))
+        {
+            SetLayerRecursively(other.gameObject, defaultLayerIndex);
+        }
     }
 
     private void SetLayerRecursively(GameObject obj, int targetLayer)

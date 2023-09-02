@@ -9,6 +9,8 @@ public class VideoManager : NetworkBehaviour
     public GameObject secondVideo;
     private Transform videoContainer;
 
+    public SlidesManager slidesManager;
+
     private GameObject firstVideoInstance;
     private GameObject secondVideoInstance;
 
@@ -30,7 +32,7 @@ public class VideoManager : NetworkBehaviour
 
     public void PlayFirstVideoButtonPressed()
     {
-        if (!spawnFirstVideoNW)
+        if (!spawnFirstVideoNW && slidesManager.slidesActive)
         {
             spawnFirstVideoNW = true;
             Debug.Log(spawnFirstVideoNW);
@@ -39,7 +41,7 @@ public class VideoManager : NetworkBehaviour
 
     public void PlaySecondVideoButtonPressed()
     {
-        if (!spawnSecondVideoNW)
+        if (!spawnSecondVideoNW && slidesManager.slidesActive)
         {
             spawnSecondVideoNW = true;
             Debug.Log(spawnSecondVideoNW);

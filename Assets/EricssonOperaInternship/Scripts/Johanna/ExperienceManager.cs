@@ -9,8 +9,8 @@ public class PortalManager : NetworkBehaviour
 
     [Networked]
     private bool showPortal { get; set; }
-
-    private float targetCutoffValuePortal;
+    [Networked]
+    private float targetCutoffValuePortal { get; set; }
     [SerializeField, Tooltip("The speed at which the variable X pendulums between 0 and 1."), Range(0f, 1f)]
     private float animationSpeedPortal = 1f;
 
