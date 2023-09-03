@@ -78,7 +78,7 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
         if (player == runner.LocalPlayer)
         {
             //NetworkObject networkPlayerObject = m_networkRunner.Spawn(userPrefab, Vector3.zero, Quaternion.identity);
-            NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: transform.position - new Vector3(-0.1f,0.1f,0.5f), rotation: transform.rotation, player, (runner, obj) => {});
+            NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: transform.position - new Vector3(-0.1f,-0.2f,-0.5f), rotation: transform.rotation, player, (runner, obj) => {});
             networkPlayerObject.GetComponent<Script_GifManagerNW>().enabled = true;
             //networkPlayerObject.transform.position = sceneCamera.transform.position;
 

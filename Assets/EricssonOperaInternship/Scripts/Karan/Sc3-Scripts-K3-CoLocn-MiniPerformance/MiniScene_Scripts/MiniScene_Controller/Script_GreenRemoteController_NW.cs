@@ -59,8 +59,8 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
     private void Start()
     {
         originalPosition = new Vector3(-1.5f, 0, 1.5f);
-        onTablePosition = new Vector3(-1.5f, 1.2f, 1.5f);
-        floatingPosition = new Vector3(-1.5f, 1.5f, 1.5f);
+        onTablePosition = new Vector3(-1.5f, .9f, 1.5f);
+        floatingPosition = new Vector3(-1.5f, 1.35f, 1.5f);
 
         remoteBall.transform.position = onTablePosition;
 
