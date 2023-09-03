@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class MiniPerf_Script_PassThruRPCManager : NetworkBehaviour
+public class MiniPerf_Script_PassThruRPCManager_n1 : NetworkBehaviour
 {
     public GameObject ovrCameraRig;
     private OVRPassthroughLayer PassThruComponent;
@@ -25,16 +25,17 @@ public class MiniPerf_Script_PassThruRPCManager : NetworkBehaviour
         await MiniPerf_Script_SharedAuthorityExtensions.WaitForStateAuthority(Object);   // what does this line return ?
     }
 
+
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_PassThruDark()
     {
-        PassThruComponent.textureOpacity = 0.05f;
+        PassThruComponent.textureOpacity = 0.1f;
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_PassThruNormal()
     {
-        PassThruComponent.textureOpacity = 1.0f;
+        PassThruComponent.textureOpacity = 1;
     }
 }
 
