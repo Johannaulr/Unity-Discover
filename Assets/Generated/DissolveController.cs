@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Fusion;
+using Discover.Networking;
 
-public class PendulumScript : MonoBehaviour
+public class DissolveController : NetworkBehaviour
 {
+	
 	[SerializeField, Tooltip("The Sphere Dissolve Portal")]
 	private GameObject dissolveSphere;
 	[SerializeField, Tooltip("The CenterEyeCamera Transform")]
@@ -16,12 +19,19 @@ public class PendulumScript : MonoBehaviour
 	[SerializeField, Tooltip("Value Cutoff Height in shader we want to achieve"),Range(-1f,1f)]
 	private float targetCutoffValue;
 	
+	[Networked]
+	private float networkedCutoffValue {get; set;}
+	
 	private float cutoffValue;
 	
 	
 	public void updateCutoffValue(float newValue)
 	{
 		targetCutoffValue = newValue;
+		if(Discover.Networking.PhotonNetwork.Runner.IsSharedModeMasterClient)
+		{
+			networkedCutoffValue = targetCutoffValue;
+		}
 	}
 	
 	
@@ -29,10 +39,15 @@ public class PendulumScript : MonoBehaviour
 	{
 		float cutOff = dissolveSphere.gameObject.GetComponent<Renderer>().material.GetFloat("_Cutoff_Height");
 	}
-    private void Update()
+	private void FixedUpdate()
     {
 	    //animatePingPong();
-	    animatePortal();
+	    
+	    if(Discover.Networking.PhotonNetwork.Runner.IsConnectedToServer)
+	    {
+		    animatePortal();
+	    }
+
 		
 	    //this.gameObject.transform.position = hmdTransform.position;
 	    
@@ -51,15 +66,17 @@ public class PendulumScript : MonoBehaviour
 			
 		}
 		
-		if(Mathf.Abs(targetCutoffValue) - Mathf.Abs(currentCutoffValue) > 0.5f)
+		
+		if(Mathf.Abs(networkedCutoffValue) - Mathf.Abs(currentCutoffValue) > 0.5f)
 		{
-			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, targetCutoffValue, animationSpeed/100));
+			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, networkedCutoffValue*portalSizeThreshold, animationSpeed/200));
 				
 		} 
 		else 
 		{
-			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, targetCutoffValue, animationSpeed/50));
+			dissolveSphere.gameObject.GetComponent<Renderer>().material.SetFloat("_Cutoff_Height",Mathf.Lerp(currentCutoffValue, networkedCutoffValue*portalSizeThreshold, animationSpeed/50));
 		}
+
 	}   
     
 	private void animatePingPong() 

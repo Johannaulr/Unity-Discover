@@ -9,6 +9,11 @@ public class SlidesManager : NetworkBehaviour
 {
     public List<Sprite> slidesCollection = new List<Sprite>();
     public GameObject activeSlide;
+
+    [Networked(OnChanged = nameof(ManageSlides))]
+    public bool slidesActive { get; set; }
+
+    private Image slideImage;
     //private NetworkRunner sessionRunner;
 
     private int activeSlideIndexPrivate;
@@ -20,6 +25,8 @@ public class SlidesManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slideImage = activeSlide.GetComponent<Image>();
+        slideImage.enabled = false;
         //networkedActiveSlideIndex = 0;
         activeSlideIndexPrivate = 0;
         activeSlideIndexPublic = 0;
@@ -66,5 +73,46 @@ public class SlidesManager : NetworkBehaviour
     {
        changed.Behaviour.activeSlideIndexPrivate = changed.Behaviour.networkedActiveSlideIndex;
        changed.Behaviour.ChangeSlide();
+    }
+
+    public void StartPresentationButtonPressed()
+    {
+        slidesActive = true;
+
+    }
+
+    public void StartPresentation()
+    {
+        if (!slideImage.enabled)
+        {
+            slideImage.enabled = true;
+        }
+    }
+
+    public void EndPresentationButtonPressed()
+    {
+        slidesActive = false;
+    }
+
+    public void EndPresentation()
+    {
+        if (slideImage.enabled)
+        {
+            slideImage.enabled = false;
+        }
+    }
+
+    public static void ManageSlides(Changed<SlidesManager> changeVariable)
+    {
+
+        if (changeVariable.Behaviour.slidesActive)
+        {
+            changeVariable.Behaviour.StartPresentation();
+        }
+
+        else
+        {
+            changeVariable.Behaviour.EndPresentation();
+        }
     }
 }

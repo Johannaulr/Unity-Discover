@@ -11,7 +11,7 @@ public class EnableVREnvironment : MonoBehaviour
     public int outsidePortalLayerIndex;
     public string playerTag;
     public string grabbableTag;
-    public GameObject[] insidePortalGameObjects;
+    public List<GameObject> insidePortalGameObjects = new List<GameObject>();
     //public GameObject[] outsidePortalGameObjects;
 
     private void OnTriggerEnter(Collider other)

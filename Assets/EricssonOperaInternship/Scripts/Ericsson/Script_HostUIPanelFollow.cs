@@ -34,7 +34,7 @@ public class Script_HostUIPanelFollow : MonoBehaviour
 
         this.gameObject.transform.LookAt(CameraObject.transform);
         this.gameObject.transform.forward *= -1;
-        this.gameObject.transform.position = CameraObject.transform.position + new Vector3(CameraObject.transform.forward.x, -1f, CameraObject.transform.forward.z).normalized * .7f;
+        this.gameObject.transform.position = CameraObject.transform.position + new Vector3(CameraObject.transform.forward.x - 0.4f, -2f, CameraObject.transform.forward.z).normalized * .7f;
 
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
 

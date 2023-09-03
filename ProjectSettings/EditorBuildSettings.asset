@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/EricssonOperaInternship/Scenes/Karan/K3-CoLocn-MiniPerformance.unity
     guid: 25dfc3249abeec340beeabddda574924
+  - enabled: 1
+    path: Assets/EricssonOperaInternship/Scenes/Ericsson/E1-Test-Scene.unity
+    guid: 455d0c19f5ce6f547863e5bdc0b072f6
+  - enabled: 0
+    path: Assets/EricssonOperaInternship/Scenes/Tony/T1-MR2VR.unity
+    guid: 088abb95ff7f81849b6e14b3b2be182c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7d7a0e475fae1ad47bb84dbb1aa98284, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c8e364865e9455940bb653a1d5eb56fb, type: 2}
