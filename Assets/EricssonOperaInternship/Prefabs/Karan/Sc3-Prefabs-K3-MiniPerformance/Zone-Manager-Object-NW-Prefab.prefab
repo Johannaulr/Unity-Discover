@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 725950920509277720}
   - component: {fileID: 4223047247634692083}
-  - component: {fileID: 3903911853748815149}
+  - component: {fileID: 4413918189964132690}
   m_Layer: 0
   m_Name: Zone-Manager-Object-NW-Prefab
   m_TagString: Untagged
@@ -55,9 +55,9 @@ MonoBehaviour:
     RawGuidValue: fa1cfc3fe15c6d344a45a73b45d188f2
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 3903911853748815149}
+  - {fileID: 4413918189964132690}
   SimulationBehaviours: []
---- !u!114 &3903911853748815149
+--- !u!114 &4413918189964132690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,15 +66,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5015222188787426640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc378988a6eecde46b04d1c835b15bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: fb65f104f6b826242978e94004a3de4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   sceneCamera: {fileID: 0}
-  ZoneBlockObj: {fileID: 0}
   remoteBall: {fileID: 0}
   InZoneFlag: 0
-  debugNWinputsText: {fileID: 0}
   remoteStateAuthFlag: 0
   _ViewerPanelFlagNW:
     _value: 0
@@ -82,3 +80,4 @@ MonoBehaviour:
   _IntNW: 0
   _boolNW:
     _value: 0
+  _floatNW: 0

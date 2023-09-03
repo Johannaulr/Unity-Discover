@@ -21,7 +21,7 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
 
     public GameObject JoiningUIPanel;
 
-    Script_LocalInputHandler localInputHandler;
+    //Script_LocalInputHandler localInputHandler;
     
     //public NetworkPlayer PlayerPF;
 
@@ -32,9 +32,7 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
     {
         m_networkRunner.AddCallbacks(this);
         m_networkRunner.ProvideInput = true;
-
     }
-
 
     public async void StartConnection(bool isHost)
     {
@@ -79,20 +77,22 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
 
         if (player == runner.LocalPlayer)
         {
-            NetworkObject networkPlayerObject = m_networkRunner.Spawn(userPrefab, Vector3.zero, Quaternion.identity);
-            networkPlayerObject.transform.position = sceneCamera.transform.position;
+            //NetworkObject networkPlayerObject = m_networkRunner.Spawn(userPrefab, Vector3.zero, Quaternion.identity);
+            NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: transform.position, rotation: transform.rotation, player, (runner, obj) => {});
+            networkPlayerObject.GetComponent<Script_GifManagerNW>().enabled = true;
+            //networkPlayerObject.transform.position = sceneCamera.transform.position;
 
-            if (localInputHandler == null)
+            /*if (localInputHandler == null)
             {
                 //localInputHandler = GameObject.Find("Zone-Manager-Object-NW-Prefab(Clone)").GetComponent<Script_LocalInputHandler>();
-                localInputHandler = networkPlayerObject.GetComponent<Script_LocalInputHandler>();
-            }
+                //localInputHandler = networkPlayerObject.GetComponent<Script_LocalInputHandler>();
+            }*/
         }
 
         //cubeTest.transform.SetParent(CubeContainerObject.transform);
         //CubeContainerObject.SetActive(false);
 
-        MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("Empty Player Prefab Spawned");
+        MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("Player Prefab Spawned");
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
@@ -115,10 +115,10 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-
+        /*
         if (localInputHandler != null) 
         {
-            //input.Set(localInputHandler.GetInputForNetwork());
+            input.Set(localInputHandler.GetInputForNetwork());
         }
 
         var nwData = new NetworkInputData();
@@ -133,7 +133,7 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
         }
 
         input.Set(nwData);
-
+        */
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
