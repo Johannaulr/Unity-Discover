@@ -7,18 +7,23 @@ public class VideoManager : NetworkBehaviour
 {
     public GameObject firstVideo;
     public GameObject secondVideo;
+    public GameObject thirdVideo;
     private Transform videoContainer;
 
     public SlidesManager slidesManager;
 
     private GameObject firstVideoInstance;
     private GameObject secondVideoInstance;
+    private GameObject thirdVideoInstance;
 
     [Networked(OnChanged = nameof(ManageFirstVideo))]
     public NetworkBool spawnFirstVideoNW { get; set; }
 
     [Networked(OnChanged = nameof(ManageSecondVideo))]
     public NetworkBool spawnSecondVideoNW { get; set; }
+
+    [Networked(OnChanged = nameof(ManageThirdVideo))]
+    public NetworkBool spawnThirdVideoNW { get; set; }
 
     private void Start()
     {
@@ -48,6 +53,15 @@ public class VideoManager : NetworkBehaviour
         }
     }
 
+    public void PlayThirdVideoButtonPressed()
+    {
+        if (!spawnThirdVideoNW && slidesManager.slidesActive)
+        {
+            spawnThirdVideoNW = true;
+            Debug.Log(spawnThirdVideoNW);
+        }
+    }
+
     public void StopFirstVideoButtonPressed()
     {
         if (spawnFirstVideoNW)
@@ -65,6 +79,16 @@ public class VideoManager : NetworkBehaviour
             Debug.Log(spawnSecondVideoNW);
         }
     }
+
+    public void StopThirdVideoButtonPressed()
+    {
+        if (spawnThirdVideoNW)
+        {
+            spawnThirdVideoNW = false;
+            Debug.Log(spawnThirdVideoNW);
+        }
+    }
+
 
     public void PlayFirstVideo()
     {
@@ -91,6 +115,20 @@ public class VideoManager : NetworkBehaviour
     public void StopSecondVideo()
     {
         Destroy(secondVideoInstance);
+    }
+
+    public void PlayThirdVideo()
+    {
+        thirdVideoInstance = Instantiate(thirdVideo);
+        thirdVideoInstance.transform.parent = videoContainer;
+        thirdVideoInstance.transform.localPosition = Vector3.zero;
+        thirdVideoInstance.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+    }
+
+    public void StopThirdVideo()
+    {
+        Destroy(thirdVideoInstance);
     }
 
 
@@ -123,6 +161,22 @@ public class VideoManager : NetworkBehaviour
         {
             Debug.Log("Stopping Second Video");
             changeVariable.Behaviour.StopSecondVideo();
+        }
+    }
+
+    public static void ManageThirdVideo(Changed<VideoManager> changeVariable)
+    {
+
+        if (changeVariable.Behaviour.spawnThirdVideoNW)
+        {
+            Debug.Log("Playing Third Video");
+            changeVariable.Behaviour.PlayThirdVideo();
+        }
+
+        else
+        {
+            Debug.Log("Stopping Third Video");
+            changeVariable.Behaviour.StopThirdVideo();
         }
     }
 
