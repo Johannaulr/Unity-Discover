@@ -11,7 +11,6 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
     public NetworkObject remoteBall;
 
     private Vector3 originalPosition;
-
     private Vector3 floatingPosition;
     private Vector3 onTablePosition;
 
@@ -24,7 +23,6 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
     private bool InZoneFlag;
 
     private Vector3 scaleChange;
-
 
     public bool remoteStateAuthFlag;
 
@@ -47,7 +45,6 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
 
     [Networked(OnChanged = nameof(ChangeLocalBoolFunc))]
     public NetworkBool boolNW { get; set; }
-
 
     [Networked]
     public float floatNW { get; set; }
@@ -88,100 +85,56 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
 
         CheckInZoneFunc(sceneCamera);
 
-        if (InZoneFlag == true)
+        if (InZoneFlag == true && Runner.IsSharedModeMasterClient)
         {
             currentState = 1;
-
             ForDebuggerFunc(currentState, prevState, "In Zone"); // current 1, prev 0
 
-            if (RemoteTakenIntNW == 0 && OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) > 0)
+            remoteBall.RequestStateAuthority();
+
+            if (remoteBall.HasStateAuthority)
             {
-                getRCfunc();
-                ForDebuggerFunc(currentState, prevState, "In Zone, Got Remote.");
+                if (OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) > 0)
+                {
+                    getRCfunc();
+                    ForDebuggerFunc(currentState, prevState, "In Zone, Got Remote.");
+                }
+                else
+                {
+                    RCfuncInZoneFloatingPosition();
+                }
             }
-            else if (RemoteTakenIntNW == 0 && OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger) == 0)
-            {
-                releaseRCfuncFloatingPosition();
-                ForDebuggerFunc(currentState, prevState, "In Zone, Released RemoteBall."); // current 0, prev 1              
-            }
-            else 
-            {
-                RCfuncFloatingPosition();
-                ForDebuggerFunc(currentState, prevState, "In Zone, No RemoteBall."); // current 0, prev 1              
-            }
-        }
-        else
-        {
-            currentState = 0;
-            ForDebuggerFunc(currentState, prevState, "Out of Zone, Released RemoteBall."); // current 0, prev 1
-            RCfuncOnTablePosition();
         }
 
+        else
+        {
+            RCfuncOnTablePosition();
+            currentState = 0;
+            ForDebuggerFunc(currentState, prevState, "Out of Zone, Released RemoteBall."); // current 0, prev 1             
+        }
     }
 
     void getRCfunc()
     {
+        RemoteTakenIntNW = 1;
+        remoteBall.transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + new Vector3(0.02f, 0, 0.14f);
 
-        remoteBall.RequestStateAuthority();
-
-        // Checking if this Object has the StateAuthority of the RemoteBall Network Object ???
-        if (remoteBall.HasStateAuthority)
-        {
-            RemoteTakenIntNW = 1;
-
-            remoteBall.transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + new Vector3(0.02f, 0, 0.14f);
-
-            /*if (remoteBall.transform.localScale.y > 0.02f && remoteBall.transform.localScale.y <= 0.1f)
-            {
-                remoteBall.transform.localScale -= scaleChange;
-            }*/
-
-        }
-
-        //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
-    }
-
-    void releaseRCfuncTablePosition()
-    {
-
-        RemoteTakenIntNW = 0;
-
-        remoteBall.transform.position = onTablePosition;
-
-        remoteBall.ReleaseStateAuthority();
-
-        /*
-        if (remoteBall.transform.localScale.y >= 0.02f && remoteBall.transform.localScale.y < 0.1f)
+        /*if (remoteBall.transform.localScale.y > 0.02f && remoteBall.transform.localScale.y <= 0.1f)
         {
             remoteBall.transform.localScale -= scaleChange;
         }*/
+        //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
     }
 
-    void releaseRCfuncFloatingPosition()
+    void RCfuncInZoneFloatingPosition()
     {
-
-        RemoteTakenIntNW = 0;
-
         remoteBall.transform.position = floatingPosition;
-
-        remoteBall.ReleaseStateAuthority();
-    }
-
-    void RCfuncFloatingPosition()
-    {
-        remoteBall.RequestStateAuthority();
-
-        remoteBall.transform.position = floatingPosition;
-
-        remoteBall.ReleaseStateAuthority();
     }
 
     void RCfuncOnTablePosition()
     {
-        remoteBall.RequestStateAuthority();
-
+        RemoteTakenIntNW = 0;
         remoteBall.transform.position = onTablePosition;
-
         remoteBall.ReleaseStateAuthority();
     }
 
@@ -228,9 +181,6 @@ public class Script_GreenRemoteController_NW : NetworkBehaviour
             //ViewerPanelObj.SetActive(false);
         }
     }
-
-
-
 
 
     private static void ViewerPanelNWfunc(Changed<Script_GreenRemoteController_NW> changedVariable)

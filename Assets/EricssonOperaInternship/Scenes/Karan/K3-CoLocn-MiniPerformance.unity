@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 334448074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ecfb749c1c6bf74cbdc87fd20c633c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d17754b0f4f3db49a2dfd7e96309c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113296919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00fcceacc7f9b646b0ca7ffc9f19cc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b1d3a9037771ba468816cdb50613b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
@@ -4176,7 +4176,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   JoiningUIPanel: {fileID: 1287581361}
-  userPrefab: {fileID: 757986471740504926, guid: be2381e073a18eb4c89a3cab421e66b0, type: 3}
+  userPrefab: {fileID: 610250577040826622, guid: be2381e073a18eb4c89a3cab421e66b0, type: 3}
   sceneCamera: {fileID: 1375892137}
 --- !u!114 &1191919990
 MonoBehaviour:
@@ -5145,6 +5145,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9106409042390136994, guid: 1dfe1817bca2ef64eae52a5061bb681b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1999919376}
     - targetCorrespondingSourceObject: {fileID: 9106409042390136998, guid: 1dfe1817bca2ef64eae52a5061bb681b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1375892138}
@@ -6491,6 +6494,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   Sphere_NW_Prefab: {fileID: 5636981134620411781, guid: 2a72dc53c9414b94386c001958683d78, type: 3}
+--- !u!1 &1999919375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9106409042390136994, guid: 1dfe1817bca2ef64eae52a5061bb681b, type: 3}
+  m_PrefabInstance: {fileID: 1375892136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999919376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999919375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &2045298769
 GameObject:
   m_ObjectHideFlags: 0
