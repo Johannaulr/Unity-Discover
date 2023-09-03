@@ -23,6 +23,8 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
     public GameObject HostUIPanel;
     public GameObject SlidesPanel;
     public GameObject SlidesBall;
+    public GameObject dissolveController;
+
 
 
     //public GameObject CubeContainerObject;
@@ -68,6 +70,15 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
             OnNetworkEvent?.Invoke("Joined Remotely");
             MiniPerf_Script_SceneManager.instance.DebugLogMessage("Joined Remotely");
         }
+
+        if (m_networkRunner.IsSharedModeMasterClient)
+        {
+            HostUIPanel.SetActive(true);
+        }
+
+        SlidesPanel.SetActive(true);
+        SlidesBall.SetActive(true);
+        dissolveController.SetActive(true);
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -76,12 +87,15 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
 
         JoiningUIPanel.SetActive(false);
 
-        if (m_networkRunner.IsSharedModeMasterClient)
-        {
-            HostUIPanel.SetActive(true);
-        }
-        SlidesPanel.SetActive(true);
-        SlidesBall.SetActive(true);
+        //if (m_networkRunner.IsSharedModeMasterClient)
+        //{
+        //    HostUIPanel.SetActive(true);
+        //}
+        //SlidesPanel.SetActive(true);
+        //SlidesBall.SetActive(true);
+        //dissolveController.SetActive(true);
+
+
 
     }
 
