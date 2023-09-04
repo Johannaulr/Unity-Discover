@@ -64,7 +64,7 @@ public class SlidesManager : NetworkBehaviour
     // PlayerRef = IsSharedModeMasterClient
 
     // Update is called once per frame
-    public override void FixedUpdateNetwork()
+   /* public override void FixedUpdateNetwork()
     {
         //Next slide
         if (OVRInput.GetUp(OVRInput.Button.One) && Runner.IsSharedModeMasterClient)
@@ -73,13 +73,13 @@ public class SlidesManager : NetworkBehaviour
             activeSlideIndex += 1;
 
             Debug.Log(activeSlideIndex);
-            /*
+            
             if (activeSlideIndexPublic > slidesCollection.Count - 1)
             {
                 activeSlideIndexPublic = slidesCollection.Count - 1;
             }
             networkedActiveSlideIndex = activeSlideIndexPublic;
-            */
+            
 
             if (activeSlideIndex > slidesCollection.Count - 1)
             {
@@ -95,12 +95,12 @@ public class SlidesManager : NetworkBehaviour
             //activeSlideIndexPublic -= 1;
             activeSlideIndex -= 1;
 
-            /*if (activeSlideIndexPublic < 0)
+            if (activeSlideIndexPublic < 0)
             {
                 activeSlideIndexPublic = 0;
             }
             networkedActiveSlideIndex = activeSlideIndexPublic;
-            */
+            
             if (activeSlideIndex < 0)
             {
                 activeSlideIndex = 0;
@@ -110,6 +110,7 @@ public class SlidesManager : NetworkBehaviour
         }
 
     }
+   */
 
     public void ChangeSlide()
     {

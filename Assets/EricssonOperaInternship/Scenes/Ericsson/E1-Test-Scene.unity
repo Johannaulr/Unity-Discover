@@ -3421,8 +3421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313575574}
   m_LocalRotation: {x: -0, y: 0.9238796, z: -0, w: -0.38268325}
-  m_LocalPosition: {x: 0, y: 0.87, z: 0}
-  m_LocalScale: {x: 0.95, y: 2.272091, z: 0.48082018}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1.1, y: 2.6308422, z: 0.55673915}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1475826067}
@@ -15129,8 +15129,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495408468}
   m_LocalRotation: {x: -0, y: 0.38521713, z: -0, w: 0.922826}
-  m_LocalPosition: {x: 0, y: 0.87, z: 0}
-  m_LocalScale: {x: 0.95, y: 2.272091, z: 0.48082018}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1.1, y: 2.6308422, z: 0.55673915}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1475826067}
@@ -15149,7 +15149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 1012759083}
-  enableVREnvironment: {fileID: 0}
+  enableVREnvironment: {fileID: 313575576}
   defaultLayerIndex: 0
   insidePortalLayerIndex: 6
   outsidePortalLayerIndex: 8
@@ -21926,15 +21926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.81937116
+      value: 0.93642426
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.91857624
+      value: 1.0498015
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_LocalPosition.x
