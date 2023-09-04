@@ -1784,7 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11441,6 +11441,7 @@ MonoBehaviour:
   SlidesPanel: {fileID: 1772832007}
   SlidesBall: {fileID: 1970601270}
   dissolveController: {fileID: 616058046}
+  debugConsole: {fileID: 1268092065}
 --- !u!114 &1191919990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20237,7 +20238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956481885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -71.7}
+  m_LocalPosition: {x: -0, y: 0, z: -19.5}
   m_LocalScale: {x: 142.8571, y: 142.85715, z: 142.8571}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22872,6 +22873,10 @@ PrefabInstance:
     - target: {fileID: 6141527337089587586, guid: cc8c0fd647a3d294584b43e3455c53ba, type: 3}
       propertyPath: m_Name
       value: DebugCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141527337089587586, guid: cc8c0fd647a3d294584b43e3455c53ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7041171946590633915, guid: cc8c0fd647a3d294584b43e3455c53ba, type: 3}
       propertyPath: m_fontSize

@@ -24,7 +24,7 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
     public GameObject SlidesPanel;
     public GameObject SlidesBall;
     public GameObject dissolveController;
-
+    public GameObject debugConsole;
 
 
     //public GameObject CubeContainerObject;
@@ -79,6 +79,7 @@ public class MiniPerf_Script_NetworkManager : MonoBehaviour, INetworkRunnerCallb
         SlidesPanel.SetActive(true);
         SlidesBall.SetActive(true);
         dissolveController.SetActive(true);
+        debugConsole.SetActive(false);
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
