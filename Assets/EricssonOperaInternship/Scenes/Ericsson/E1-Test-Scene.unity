@@ -17676,7 +17676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7784df04f91bbe41bafb974e3d11be0, type: 2}
+  - {fileID: 2100000, guid: 2996d0c3711ad314d857970097e3befb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21994,7 +21994,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010055107056, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1000010346633862, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
       propertyPath: m_Name
@@ -22080,6 +22080,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23000010965203190, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000011000226794, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c74810318ff1326498e516e534b64487, type: 2}
+    - target: {fileID: 23000011975334006, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c74810318ff1326498e516e534b64487, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22088,6 +22100,11 @@ PrefabInstance:
 --- !u!4 &2091949815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
+  m_PrefabInstance: {fileID: 2091949814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2091949816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013323770450, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
   m_PrefabInstance: {fileID: 2091949814}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097168547
@@ -22122,6 +22139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   portal: {fileID: 313575574}
+  portalFrame: {fileID: 2091949816}
   animationSpeedPortal: 0.7
 --- !u!4 &2097168550
 Transform:
