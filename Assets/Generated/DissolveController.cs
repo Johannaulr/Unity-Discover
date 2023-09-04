@@ -75,7 +75,7 @@ using System;
         if (Runner.IsSharedModeMasterClient)
         {
             networkedCutoffValue = targetCutoffValue;
-            Debug.Log("Updated networkCutout to: " + networkedCutoffValue);
+            //Debug.Log("Updated networkCutout to: " + networkedCutoffValue);
 
         }
 
