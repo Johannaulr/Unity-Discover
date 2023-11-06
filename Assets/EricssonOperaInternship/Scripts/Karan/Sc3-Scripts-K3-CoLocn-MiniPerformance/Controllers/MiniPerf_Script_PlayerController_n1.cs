@@ -24,7 +24,7 @@ public class MiniPerf_Script_PlayerController_n1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.A))
+        if (OVRInput.GetUp(OVRInput.RawButton.X))
         {
             audioPlayFlag = !audioPlayFlag;
 
@@ -44,11 +44,13 @@ public class MiniPerf_Script_PlayerController_n1 : MonoBehaviour
 
             if (passThruDarkFlag)
             {
-                MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.DarkPassThru);
+                //MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.DarkPassThru);
+                MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.PassThruDimmer);
             }
             else
             {
-                MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.NormalPassThru);
+                //MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.NormalPassThru);
+                MiniPerf_Script_SceneManager_n1.instance.SendRPC(myRPCs.PassThruBrighter);
             }
         }
 

@@ -65,15 +65,18 @@ public class Script_GifManagerNW : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.Y))
+        if (OVRInput.GetUp(OVRInput.RawButton.A))
         {
+
             if (VideoHeadFlagNW == false)
             {
                 VideoHeadFlagNW = true;
                 this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(true);
                 //RPC_ChangeVideo(randomVidIntNW);
             }
-
+            
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+            
             randomVidIntNW++;
 
             if (randomVidIntNW > 2)
@@ -88,7 +91,9 @@ public class Script_GifManagerNW : NetworkBehaviour
 
             //RPC_ChangeVideo(randomVidIntNW);
 
-            MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("YYY");
+            Invoke("StopHapticVibrationRight", 0.3f);
+
+            MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("AAA");
         }
     }
 
@@ -101,6 +106,11 @@ public class Script_GifManagerNW : NetworkBehaviour
         {
             VideoQuadList[k].GetComponent<VideoPlayer>().clip = videoArray[ValRecv];
         }
+    }
+
+    private void StopHapticVibrationRight()
+    {
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
     }
 }
 

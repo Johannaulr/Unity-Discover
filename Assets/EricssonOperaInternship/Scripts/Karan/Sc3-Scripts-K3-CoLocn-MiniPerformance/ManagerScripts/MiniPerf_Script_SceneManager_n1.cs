@@ -12,7 +12,8 @@ public enum myRPCs
     StopAudio,
     DarkPassThru,
     NormalPassThru,
-    StartSomething
+    PassThruDimmer,
+    PassThruBrighter
 }
 
 
@@ -92,10 +93,32 @@ public class MiniPerf_Script_SceneManager_n1 : MonoBehaviour
                 }
                 break;
 
-            case myRPCs.StartSomething:
+            case myRPCs.PassThruDimmer:
                 if (isHostInFusionServer)
                 {
-                    
+                    float valSend = 1.0f;
+                    float valDecrease = 0.95f / 7.0f;
+                    for (var k = 0; k < 8; k++)
+                    {
+                        PassThruRPCController.RPC_PassThruDimmer(valSend);
+                        StartCoroutine(CoroutinePassthruDelay(3));
+                        valSend -= valDecrease;
+                    }
+                    DebugLogMessage($"Host triggered RPC {rpcType}");
+                }
+                break;
+
+            case myRPCs.PassThruBrighter:
+                if (isHostInFusionServer)
+                {
+                    float valSend = 0.05f;
+                    float valIncrease = .95f / 7.0f;
+                    for (var k = 0; k < 8; k++)
+                    {
+                        PassThruRPCController.RPC_PassThruBrighter(valSend);
+                        StartCoroutine(CoroutinePassthruDelay(3));
+                        valSend += valIncrease;
+                    }
                     DebugLogMessage($"Host triggered RPC {rpcType}");
                 }
                 break;
@@ -103,6 +126,12 @@ public class MiniPerf_Script_SceneManager_n1 : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    IEnumerator CoroutinePassthruDelay(float delayRecv)
+    {
+        //yield on a new YieldInstruction that waits for delay received seconds.
+        yield return new WaitForSeconds(delayRecv);
     }
 
     public void DebugLogMessage(string text)

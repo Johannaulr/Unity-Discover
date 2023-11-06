@@ -37,5 +37,18 @@ public class MiniPerf_Script_PassThruRPCManager_n1 : NetworkBehaviour
     {
         PassThruComponent.textureOpacity = 1.0f;
     }
+
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_PassThruDimmer(float valRecv)
+    {
+        PassThruComponent.textureOpacity = valRecv;
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_PassThruBrighter(float valRecv)
+    {
+        PassThruComponent.textureOpacity = valRecv;
+    }
 }
 

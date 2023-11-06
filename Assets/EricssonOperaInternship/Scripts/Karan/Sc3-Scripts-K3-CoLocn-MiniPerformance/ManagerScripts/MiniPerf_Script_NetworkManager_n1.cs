@@ -20,9 +20,10 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
     public UnityEvent<string> OnNetworkEvent;
 
     public GameObject JoiningUIPanel;
+    public GameObject DebugPanel;
 
     //Script_LocalInputHandler localInputHandler;
-    
+
     //public NetworkPlayer PlayerPF;
 
     public NetworkObject userPrefab;
@@ -74,11 +75,12 @@ public class MiniPerf_Script_NetworkManager_n1 : MonoBehaviour, INetworkRunnerCa
         MiniPerf_Script_SceneManager_n1.instance.DebugLogMessage("Player Joined");
 
         JoiningUIPanel.SetActive(false);
+        DebugPanel.SetActive(false);
 
         if (player == runner.LocalPlayer)
         {
             //NetworkObject networkPlayerObject = m_networkRunner.Spawn(userPrefab, Vector3.zero, Quaternion.identity);
-            NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: transform.position - new Vector3(-0.1f,-0.2f,-0.5f), rotation: transform.rotation, player, (runner, obj) => {});
+            NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: sceneCamera.transform.position + new Vector3(0, -0.5f, -0.5f), rotation: transform.rotation, player, (runner, obj) => {});
             networkPlayerObject.GetComponent<Script_GifManagerNW>().enabled = true;
             //networkPlayerObject.transform.position = sceneCamera.transform.position;
 

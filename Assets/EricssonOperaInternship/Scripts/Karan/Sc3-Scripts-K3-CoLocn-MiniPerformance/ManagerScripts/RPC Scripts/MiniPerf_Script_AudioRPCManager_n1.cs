@@ -25,7 +25,7 @@ public class MiniPerf_Script_AudioRPCManager_n1 : NetworkBehaviour
     {
         if (audioSource != null && !musicStarted)
         {
-            audioSource.volume = 0.9f;
+            audioSource.volume = 0.75f;
             audioSource.Play();
             musicStarted = true;
         }
